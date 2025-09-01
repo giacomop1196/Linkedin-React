@@ -104,7 +104,7 @@ const Footer = () => {
             <div className="footer-icon-block">
               <i className="bi bi-shield-slash"></i>
               <div>
-                <p className="mp">Trasparenza sui contenuti consigliati.</p>
+                <p className="mp">Trasparenza sui contenuti consigliati</p>
                 <a href="#">Scopri di più sui contenuti consigliati.</a>
               </div>
             </div>
