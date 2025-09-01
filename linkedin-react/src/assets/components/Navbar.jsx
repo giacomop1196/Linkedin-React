@@ -82,10 +82,12 @@ const NavBar= ()=>{
       <h5><strong>Le mie app</strong></h5>
     </NavDropdown.Item>
     <NavDropdown.Item>
-      <h5>Trova Lead</h5>
+        <i className="bi bi-compass-fill d-flex my-1" href='compass'><h5 className='ms-2'>Trova Lead</h5></i>
+      
     </NavDropdown.Item>
     <NavDropdown.Item>
-      <h5><strong>Gruppi</strong></h5>
+        <i class="bi bi-chat-dots-fill"><h5>Gruppi</h5></i>
+     
     </NavDropdown.Item>
     <NavDropdown.Header>Talent</NavDropdown.Header>
     <NavDropdown.Item>
