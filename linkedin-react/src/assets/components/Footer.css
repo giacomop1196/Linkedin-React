@@ -56,7 +56,9 @@
 
 .mp{
     font-weight: 700;
-    color:#7e8489
+    color:#7e8489;
+        margin-bottom: 0.5rem;
+
 }
 
 a {
