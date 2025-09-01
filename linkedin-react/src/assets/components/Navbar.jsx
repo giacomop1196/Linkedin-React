@@ -1,21 +1,26 @@
 
-import Container from 'react-bootstrap/Container';
+
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import {Container,Row,Col} from 'react-bootstrap';
 
 const NavBar= ()=>{
     return (
-         <Navbar expand="lg" className="bg-body-light h4">
+       <Container fluid className='bg-light border-bottom'>
+            <Row className="justify-content-center p-0">
+                <Col xs={12} md={10} lg={8} className='p-0'>
+         <Navbar expand="lg" className="bg-body-light h6">
       <Container fluid className='d-flex justify-content-center align-items-center'>
         <Navbar.Brand href="#"><i class="bi bi-linkedin" style={{fontSize:"1.8rem",color: "#0A66C2"}}></i></Navbar.Brand>
-          <Form className="d-none d-md-flex mx-5 flex-grow-1 rounded-pill" style={{ maxWidth: "300px" }}>
+          <Form className="d-none d-md-flex mx-3 flex-grow-1 " style={{ maxWidth: "300px" }}>
             <Form.Control
-              type="search"
-              placeholder="Search"
+              type=" search"
+              placeholder="🔍 Cerca"
               className="me-2"
               aria-label="Search"
+              classNamer='rounded-pill'
             />
           </Form>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -25,6 +30,7 @@ const NavBar= ()=>{
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
+            <div className='d-flex border-end'>
             <Nav.Link href="#lavoro" className="d-flex flex-column align-items-center mx-3"> <i className="bi bi-house-door-fill" style={{ fontSize: "1.5rem" }}></i>
               <span style={{ fontSize: "0.75rem" }}>Home</span></Nav.Link>
             <Nav.Link href="#lavoro" className="d-flex flex-column align-items-center mx-3">  <i className="bi bi-people-fill" style={{ fontSize: "1.5rem" }}></i>
@@ -59,15 +65,66 @@ const NavBar= ()=>{
               <NavDropdown.Divider />
               <NavDropdown.Item href="#logout">Esci</NavDropdown.Item>
             </NavDropdown>
+            </div>
+           
+  
+  <div className="d-flex align-items-start position-relative">
+  <div className="d-flex flex-column align-items-center me-1">
+    <i className="bi bi-layout-text-window" style={{ fontSize: "1.5rem" }}></i>
+    <span style={{ fontSize: "0.75rem" }}>Per le aziende</span>
+  </div>
+
+  
+  <NavDropdown  id="nav-dropdown-apps"   className="align-self-start"
+    style={{ marginTop: '1.2rem' }}>
+        <div>
+    <NavDropdown.Item className="border-bottom">
+      <h5><strong>Le mie app</strong></h5>
+    </NavDropdown.Item>
+    <NavDropdown.Item>
+      <h5>Trova Lead</h5>
+    </NavDropdown.Item>
+    <NavDropdown.Item>
+      <h5><strong>Gruppi</strong></h5>
+    </NavDropdown.Item>
+    <NavDropdown.Header>Talent</NavDropdown.Header>
+    <NavDropdown.Item>
+      <h5><strong>Pubblica un'offerta di lavoro</strong></h5>
+    </NavDropdown.Item>
+    <NavDropdown.Item>
+      <h5><strong>Talent Insights</strong></h5>
+    </NavDropdown.Item>
+    <NavDropdown.Header>Vendite</NavDropdown.Header>
+    <NavDropdown.Item>
+      <h5><strong>Marketplace dei servizi</strong></h5>
+    </NavDropdown.Item>
+    <NavDropdown.Header>Marketing</NavDropdown.Header>
+    <NavDropdown.Item>
+      <h5><strong>Pubblicizza</strong></h5>
+    </NavDropdown.Item>
+    <NavDropdown.Header>Learning</NavDropdown.Header>
+    <NavDropdown.Item>
+      <h5><strong>Learning</strong></h5>
+    </NavDropdown.Item>
+    </div>
+    
+  </NavDropdown>
+</div>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
-
+    </Col>
+    </Row>
+</Container>
+     
     )
 }
 export default NavBar
           
+
+
+
 
               
        
