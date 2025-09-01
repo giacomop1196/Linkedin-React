@@ -4,17 +4,17 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 // Importazione delle icone Bootstrap
 import 'bootstrap-icons/font/bootstrap-icons.min.css';
-// Importazione del componente ProfileSettingsCard
-import ProfileSettingsCard from './components/ProfileSettingsCard';
 // Importazione del componente Footer
 import Footer from './components/Footer';
+// Importazione del componente RightSidebar
+import RightSidebar from './components/RightSidebar';
 
 // Componente principale dell'applicazione
 function App() {
   return (
     <>
-      {/* Rendering del componente ProfileSettingsCard che mostra le impostazioni del profilo */}
-      <ProfileSettingsCard />
+      {/* Rendering del componente RightSidebar che mostra la sidebar destra in stile LinkedIn */}
+      <RightSidebar />
       {/* Rendering del componente Footer */}
       <Footer />
     </>
