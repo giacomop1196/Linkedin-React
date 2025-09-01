@@ -1,8 +1,8 @@
 import { Container, Row, Col, Card, Button, Image } from 'react-bootstrap';
-
+import RightSidebar from './RightSidebar';
 const LinkedinProfileSection = () => {
     return (
-        <Container fluid className='bg-light'>
+        <Container fluid className='bg-light d-flex'>
             <Row className="justify-content-center">
                 <Col xs={12} md={10} lg={8}>
                     <Card className="mt-4 mb-4">
@@ -221,6 +221,9 @@ const LinkedinProfileSection = () => {
                         </Card.Body>
                     </Card>
                 </Col>
+            </Row>
+            <Row>
+                <RightSidebar />
             </Row>
         </Container>
     );
