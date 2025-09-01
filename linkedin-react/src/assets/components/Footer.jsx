@@ -85,7 +85,7 @@ const Footer = () => {
               <i className="bi bi-gear-fill"></i>
               <div>
                 <p className="mp">Gestisci il tuo account e la tua privacy</p>
-                <a href="#">Vai alle impostazioni</a>
+                <a href="#">Vai alle impostazioni.</a>
               </div>
             </div>
 
