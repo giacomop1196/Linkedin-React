@@ -10,8 +10,50 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import { useEffect, useState } from "react";
+function AddExperiences({ show, closeModal, userId }) {
+  const [formValues, setFormValues] = useState({
+    role: "",
+    company: "",
+    startDate: "",
+    endDate: "",
+    description: "",
+    area: "",
+  });
+    useEffect(() => { });
+    const changeValues = (e) => {
+        const { name, value } = e.target;
+        setFormValues(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
 
-function AddExperiences({ show, closeModal }) {
+  const apiKey = import.meta.env.VITE_API_KEY;
+  const addExperiences = (e) => {
+    e.preventDefault();
+    const apiLinkExperiences = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`;
+
+    fetch(apiLinkExperiences, {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + apiKey,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          setFormValues(formValues);
+        }
+        throw new Error("Errore nel recupero dei dati");
+      })
+      .then((experiences) => {
+        console.log(experiences, "dati esperienze arrivate:");
+      })
+      .catch((error) => {
+        console.error("Errore nel recupero dei dati:", error);
+      });
+  };
   if (show == false) {
     return null;
   }
@@ -22,29 +64,62 @@ function AddExperiences({ show, closeModal }) {
           <Modal.Title>Add Experiences</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form onSubmit={addExperiences}>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Role</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Add previous company"
+                autoFocus
+                value={formValues.role} 
+                onChange={changeValues}
+              />
+            </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Company</Form.Label>
-              <Form.Control type="text" placeholder="Add previous company" autoFocus />
+              <Form.Control
+                type="text"
+                placeholder="Add previous company"
+                autoFocus
+                value={formValues.company} 
+                onChange={changeValues}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Start Date</Form.Label>
-              <Form.Control type="date" autoFocus />
+              <Form.Control
+                type="date"
+                autoFocus
+                value={formValues.startDate} 
+                onChange={changeValues}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>End Date</Form.Label>
-              <Form.Control type="date" autoFocus />
+              <Form.Control type="date" autoFocus value={formValues.endDate} 
+              onChange={changeValues} />
             </Form.Group>
             <Form.Group
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Label>Description of your role</Form.Label>
-              <Form.Control as="textarea" rows={3} />
+              <Form.Control
+                as="textarea"
+                rows={3}
+                value={formValues.description} 
+                onChange={changeValues}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Area</Form.Label>
-              <Form.Control type="text" placeholder="Where.." autoFocus />
+              <Form.Control
+                type="text"
+                placeholder="Where.."
+                autoFocus
+                value={formValues.area} 
+                onChange={changeValues}
+              />
             </Form.Group>
           </Form>
         </Modal.Body>

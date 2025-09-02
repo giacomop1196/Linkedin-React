@@ -335,7 +335,7 @@ const LinkedinProfileSection = () => {
                         <Col>
                             <ProfileRightSidebar username={results.username} profileName={results.name} />
                         </Col>
-                        <AddExperiences show = {showExperenciesModal} closeModal={closeExperenciesModal} ></AddExperiences>
+                        <AddExperiences show = {showExperenciesModal} closeModal={closeExperenciesModal} userId={results._id} ></AddExperiences>
                     </Row>
                 </Container>
             )}
