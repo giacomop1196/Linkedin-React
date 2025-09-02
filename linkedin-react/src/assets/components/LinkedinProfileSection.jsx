@@ -1,6 +1,7 @@
 import { Container, Row, Col, Card, Button, Image, Spinner } from 'react-bootstrap';
 import { useState, useEffect } from 'react'
 import ProfileRightSidebar from './ProfileRightSidebar';
+import AddExperiences from './ModalAddExperiences';
 
 const LinkedinProfileSection = () => {
 
@@ -19,7 +20,10 @@ const LinkedinProfileSection = () => {
     const [showExperenciesModal, setExperenciesModal] = useState(false);
 
     const openExperenciesModal = () => {
-        setExperenciesModal(!showExperenciesModal);
+        setExperenciesModal(true);
+    };
+    const closeExperenciesModal = () => {
+        setExperenciesModal(false);
     };
 
     useEffect(() => {
@@ -331,6 +335,7 @@ const LinkedinProfileSection = () => {
                         <Col>
                             <ProfileRightSidebar username={results.username} profileName={results.name} />
                         </Col>
+                        <AddExperiences show = {showExperenciesModal} closeModal={closeExperenciesModal} ></AddExperiences>
                     </Row>
                 </Container>
             )}
