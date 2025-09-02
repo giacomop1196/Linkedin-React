@@ -1,7 +1,11 @@
 import { useState } from "react";
 
-const DeleteExperience = ({profile_id, experience_id, closeEditModal, getExperencies}) => {
-
+const DeleteExperience = ({
+  profile_id,
+  experience_id,
+  closeEditModal,
+  getExperencies,
+}) => {
   const apiKey = import.meta.env.VITE_API_KEY;
   const apiLinkExperiences = `https://striveschool-api.herokuapp.com/api/profile/${profile_id.profile_id}/experiences/${experience_id}`;
 
@@ -29,7 +33,7 @@ const DeleteExperience = ({profile_id, experience_id, closeEditModal, getExperen
 
   return (
     <p className="me-2 pointer" onClick={deleteButton}>
-      Delete experience
+      Elimina Esperienza
     </p>
   );
 };

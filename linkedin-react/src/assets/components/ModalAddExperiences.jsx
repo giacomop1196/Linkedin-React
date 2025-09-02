@@ -75,15 +75,15 @@ function AddExperiences({ show, closeModal, userId, getExperencies }) {
     <>
       <Modal show={show}>
         <Modal.Header>
-          <Modal.Title>Add Experiences</Modal.Title>
+          <Modal.Title>Aggiungi Esperienze</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={addExperiences}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Role</Form.Label>
+              <Form.Label>Ruolo</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Add previous company"
+                placeholder="Aggiungi il tuo ruolo"
                 autoFocus
                 name='role'
                 value={formValues.role}
@@ -92,10 +92,10 @@ function AddExperiences({ show, closeModal, userId, getExperencies }) {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Company</Form.Label>
+              <Form.Label>Azienda</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Add previous company"
+                placeholder="Aggiungi l'azienda"
                 autoFocus
                 name='company'
                 value={formValues.company}
@@ -104,7 +104,7 @@ function AddExperiences({ show, closeModal, userId, getExperencies }) {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Start Date</Form.Label>
+              <Form.Label>Data di inizio</Form.Label>
               <Form.Control
                 type="date"
                 autoFocus
@@ -115,7 +115,7 @@ function AddExperiences({ show, closeModal, userId, getExperencies }) {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>End Date</Form.Label>
+              <Form.Label>Data di fine</Form.Label>
               <Form.Control
                 type="date"
                 autoFocus
@@ -128,7 +128,7 @@ function AddExperiences({ show, closeModal, userId, getExperencies }) {
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             >
-              <Form.Label>Description of your role</Form.Label>
+              <Form.Label>Descrivi il tuo ruolo</Form.Label>
               <Form.Control
                 as="textarea"
                 rows={3}
@@ -139,10 +139,10 @@ function AddExperiences({ show, closeModal, userId, getExperencies }) {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Area</Form.Label>
+              <Form.Label>Città</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Where.."
+                placeholder="Dove?"
                 autoFocus
                 name='area'
                 value={formValues.area}
@@ -154,17 +154,16 @@ function AddExperiences({ show, closeModal, userId, getExperencies }) {
               <Form.Label>Img</Form.Label>
               <Form.Control
                 type="file"
-                placeholder="Where.."
                 autoFocus
            
               />
             </Form.Group>
-            <Button variant="primary" type="submit" >Save Changes</Button>
+            <Button variant="primary" type="submit" >Salva Cambiamenti</Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={closeModal}>
-            Close
+            Chiudi
           </Button>
         </Modal.Footer>
       </Modal>

@@ -114,12 +114,12 @@ function ModalEditExperience({
   return (
     <Modal show={showEdit} onHide={closeEditModal}>
       <Modal.Header>
-        <Modal.Title>Edit Experience</Modal.Title>
+        <Modal.Title>Modifica l'esperienza</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={editExperience}>
           <Form.Group className="mb-3">
-            <Form.Label>Role</Form.Label>
+            <Form.Label>Ruolo</Form.Label>
             <Form.Control
               type="text"
               name="role"
@@ -129,7 +129,7 @@ function ModalEditExperience({
             />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Company</Form.Label>
+            <Form.Label>Azienda</Form.Label>
             <Form.Control
               type="text"
               name="company"
@@ -139,7 +139,7 @@ function ModalEditExperience({
             />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Start Date</Form.Label>
+            <Form.Label>Data di inizio</Form.Label>
             <Form.Control
               type="date"
               name="startDate"
@@ -149,7 +149,7 @@ function ModalEditExperience({
             />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>End Date</Form.Label>
+            <Form.Label>Data di fine</Form.Label>
             <Form.Control
               type="date"
               name="endDate"
@@ -159,7 +159,7 @@ function ModalEditExperience({
             />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Description of your role</Form.Label>
+            <Form.Label>Descrivi il tuo ruolo</Form.Label>
             <Form.Control
               as="textarea"
               rows={3}
@@ -170,7 +170,7 @@ function ModalEditExperience({
             />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Area</Form.Label>
+            <Form.Label>Città</Form.Label>
             <Form.Control
               type="text"
               name="area"
@@ -192,10 +192,10 @@ function ModalEditExperience({
                 onClick={closeEditModal}
                 className="me-2"
               >
-                Close
+                Chiudi
               </Button>
               <Button variant="primary" type="submit">
-                Save Changes
+                Salva Cambiamenti
               </Button>
             </div>
           </div>
