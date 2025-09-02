@@ -13,7 +13,7 @@ const NavBar = () => {
   };
   return (
     <Container fluid className="bg-light border-bottom">
-      <Row className="justify-content-center p-0">
+      <Row fluid className="justify-content-center p-0">
         <Col xs={12} md={10} lg={8} className="p-0">
           <Navbar expand="lg" className="bg-body-light h6">
             <Container
