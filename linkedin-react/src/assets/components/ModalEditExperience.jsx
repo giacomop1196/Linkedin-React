@@ -50,6 +50,8 @@ function ModalEditExperience({
     }
   }, [showEdit, userId, experienceId, apiKey]);
 
+  console.log('id esperienza:' , experienceId)
+
   // Questo useEffect popola il form non appena i dati dell'esperienza sono disponibili
   useEffect(() => {
     if (resultExperencie) {
@@ -172,7 +174,7 @@ function ModalEditExperience({
           <div className="d-flex w-100 justify-content-between">
             <DeleteExperience
               profile_id={userId}
-              experience_Id={experienceId}
+              experience_id={experienceId}
               closeEditModal={closeEditModal}
             />
             <div>
