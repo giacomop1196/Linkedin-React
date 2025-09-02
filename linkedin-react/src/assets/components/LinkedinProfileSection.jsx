@@ -1,4 +1,4 @@
-import { Container, Row, Col, Card, Button, Image, Spinner } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Image, Spinner, Alert } from 'react-bootstrap';
 import { useState, useEffect } from 'react'
 import ProfileRightSidebar from './ProfileRightSidebar';
 import AddExperiences from './ModalAddExperiences';
@@ -356,8 +356,8 @@ const LinkedinProfileSection = () => {
                             <ProfileRightSidebar username={results.username} profileName={results.name} />
                         </Col>
                         {/* Modale Aggiungi Esperienza */}
-                        <AddExperiences show={showExperenciesModal} closeModal={closeExperenciesModal} userId={results._id} />
-                         <ModalEditExperience showEdit={showEditExperencieModal} closeEditModal={closeEditExperencieModal} userId={results._id} experienceId={selectedExperienceId} />
+                        <AddExperiences getExperencies={getExperencies} show={showExperenciesModal} closeModal={closeExperenciesModal} userId={results._id} />
+                         <ModalEditExperience getExperencies={getExperencies} showEdit={showEditExperencieModal} closeEditModal={closeEditExperencieModal} userId={results._id} experienceId={selectedExperienceId} />
                     </Row>
                 </Container>
             )}
