@@ -1,9 +1,9 @@
 import { Container, Row, Col, Card, Button, Image, Spinner } from 'react-bootstrap';
 import { useState, useEffect } from 'react'
-import RightSidebar from './RightSidebar';
+import ProfileRightSidebar from './ProfileRightSidebar';
 
 const LinkedinProfileSection = () => {
-    
+
     const apiKey = import.meta.env.VITE_API_KEY;
 
     const apiLink = `https://striveschool-api.herokuapp.com/api/profile/me`
@@ -13,6 +13,14 @@ const LinkedinProfileSection = () => {
     const [isError, setIsError] = useState(false)
 
     const [results, setResults] = useState(null)
+
+    const [resultsExperencies, setResultsExperencies] = useState(null)
+
+    const [showExperenciesModal, setExperenciesModal] = useState(false);
+
+    const openExperenciesModal = () => {
+        setExperenciesModal(!showExperenciesModal);
+    };
 
     useEffect(() => {
         getResults()
@@ -37,6 +45,37 @@ const LinkedinProfileSection = () => {
             .then((profile) => {
                 console.log(profile, 'dati profilo arrivati')
                 setResults(profile)
+                setIsLoading(false)
+                getExperencies(profile._id)
+            })
+            .catch((error) => {
+
+                console.error("Errore nel recupero dei dati:", error);
+                setIsLoading(false)
+                setIsError(true)
+            })
+    }
+
+    const getExperencies = (profile_id) => {
+
+        const apiLinkExperiences = `https://striveschool-api.herokuapp.com/api/profile/${profile_id}/experiences`
+
+        fetch(apiLinkExperiences, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + apiKey,
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((res) => {
+                if (res.ok) {
+                    return res.json()
+                }
+                throw new Error('Errore nel recupero dei dati')
+            })
+            .then((experiences) => {
+                console.log(experiences, 'dati esperienze arrivate:')
+                setResultsExperencies(experiences)
                 setIsLoading(false)
             })
             .catch((error) => {
@@ -203,7 +242,7 @@ const LinkedinProfileSection = () => {
                                     <div className="d-flex justify-content-between align-items-center mb-3">
                                         <Card.Title>Esperienza</Card.Title>
                                         <div>
-                                            <i className="bi bi-plus" style={{ fontSize: '24px', marginRight: '10px' }}></i>
+                                            <i className="bi bi-plus" style={{ fontSize: '24px', marginRight: '10px' }} onClick={openExperenciesModal}></i>
                                             <i className="bi bi-pencil"></i>
                                         </div>
                                     </div>
@@ -290,7 +329,7 @@ const LinkedinProfileSection = () => {
                             </Card>
                         </Col>
                         <Col>
-                            <RightSidebar />
+                            <ProfileRightSidebar username={results.username} profileName={results.name} />
                         </Col>
                     </Row>
                 </Container>

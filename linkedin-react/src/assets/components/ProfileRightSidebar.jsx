@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card, Button, Image, Modal, ListGroup } from 'react-bootstrap';
 
-const RightSidebar = () => {
+const ProfileRightSidebar = (props) => {
   // Stati per gestire i modal
   const [showLanguageModal, setShowLanguageModal] = useState(false);
   const [showUrlModal, setShowUrlModal] = useState(false);
@@ -14,7 +14,7 @@ const RightSidebar = () => {
 
   const [profileUrl, setProfileUrl] = useState(() => {
     // Carica l'URL salvato dal localStorage o usa l'URL di default
-    return localStorage.getItem('linkedinProfileUrl') || 'www.linkedin.com/in/giacomo-pillitteri';
+    return localStorage.getItem('linkedinProfileUrl') || `www.linkedin.com/in/${props.username}`;
   });
 
   const [tempUrl, setTempUrl] = useState('');
@@ -121,7 +121,7 @@ const RightSidebar = () => {
               </div>
             </div>
             <p className="mb-2 small">
-              Giacomo, rimani al corrente sulle ultime notizie da Iren Business Solutions
+              {props.profileName}, rimani al corrente sulle ultime notizie da Iren Business Solutions
             </p>
             <p className="mb-2 small text-muted">
               Rimani al corrente sulle ultime notizie e aggiornamenti di settore
@@ -235,4 +235,4 @@ const RightSidebar = () => {
   );
 };
 
-export default RightSidebar;
+export default ProfileRightSidebar;
