@@ -1,5 +1,7 @@
+import { useState } from "react";
 
-const DeleteExperience = ({profile_id, experience_id, closeEditModal}) => {
+const DeleteExperience = ({profile_id, experience_id, closeEditModal, getExperencies}) => {
+
   const apiKey = import.meta.env.VITE_API_KEY;
   const apiLinkExperiences = `https://striveschool-api.herokuapp.com/api/profile/${profile_id.profile_id}/experiences/${experience_id}`;
 
@@ -15,6 +17,7 @@ const DeleteExperience = ({profile_id, experience_id, closeEditModal}) => {
         if (res.ok) {
           console.log(" Esperienza eliminata con successo!");
           closeEditModal();
+          getExperencies(profile_id);
         } else {
           throw new Error(" Errore nella cancellazione dell'esperienza");
         }

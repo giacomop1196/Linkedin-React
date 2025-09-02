@@ -9,6 +9,7 @@ function ModalEditExperience({
   closeEditModal,
   userId,
   experienceId,
+  getExperencies,
 }) {
   const [resultExperencie, setResultExperencie] = useState(null);
 
@@ -99,6 +100,7 @@ function ModalEditExperience({
       .then((updatedExperience) => {
         console.log(updatedExperience, "Esperienza aggiornata:");
         closeEditModal();
+        getExperencies(userId);
       })
       .catch((error) => {
         console.error("Errore nell'aggiornamento dei dati:", error);
@@ -123,6 +125,7 @@ function ModalEditExperience({
               name="role"
               value={formValues.role}
               onChange={changeValues}
+              required
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -132,6 +135,7 @@ function ModalEditExperience({
               name="company"
               value={formValues.company}
               onChange={changeValues}
+              required
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -141,6 +145,7 @@ function ModalEditExperience({
               name="startDate"
               value={formValues.startDate}
               onChange={changeValues}
+              required
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -150,6 +155,7 @@ function ModalEditExperience({
               name="endDate"
               value={formValues.endDate}
               onChange={changeValues}
+              required
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -160,6 +166,7 @@ function ModalEditExperience({
               name="description"
               value={formValues.description}
               onChange={changeValues}
+              required
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -169,6 +176,7 @@ function ModalEditExperience({
               name="area"
               value={formValues.area}
               onChange={changeValues}
+              required
             />
           </Form.Group>
           <div className="d-flex w-100 justify-content-between">
@@ -176,6 +184,7 @@ function ModalEditExperience({
               profile_id={userId}
               experience_id={experienceId}
               closeEditModal={closeEditModal}
+              getExperencies={getExperencies}
             />
             <div>
               <Button

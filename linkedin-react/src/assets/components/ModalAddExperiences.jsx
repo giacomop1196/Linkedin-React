@@ -12,7 +12,7 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
 
-function AddExperiences({ show, closeModal, userId }) {
+function AddExperiences({ show, closeModal, userId, getExperencies }) {
   
   const [formValues, setFormValues] = useState({
     role: "",
@@ -62,6 +62,7 @@ function AddExperiences({ show, closeModal, userId }) {
           description: "",
           area: "",
         });
+        getExperencies(userId)
       })
       .catch((error) => {
         console.error("Errore nel recupero dei dati:", error);
@@ -87,6 +88,7 @@ function AddExperiences({ show, closeModal, userId }) {
                 name='role'
                 value={formValues.role}
                 onChange={changeValues}
+                required
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -98,6 +100,7 @@ function AddExperiences({ show, closeModal, userId }) {
                 name='company'
                 value={formValues.company}
                 onChange={changeValues}
+                required
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -108,6 +111,7 @@ function AddExperiences({ show, closeModal, userId }) {
                 name='startDate'
                 value={formValues.startDate}
                 onChange={changeValues}
+                required
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -118,6 +122,7 @@ function AddExperiences({ show, closeModal, userId }) {
                 name='endDate'
                 value={formValues.endDate}
                 onChange={changeValues}
+                required
               />
             </Form.Group>
             <Form.Group
@@ -131,6 +136,7 @@ function AddExperiences({ show, closeModal, userId }) {
                 name='description'
                 value={formValues.description}
                 onChange={changeValues}
+                required
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -142,6 +148,7 @@ function AddExperiences({ show, closeModal, userId }) {
                 name='area'
                 value={formValues.area}
                 onChange={changeValues}
+                required
               />
             </Form.Group>
             <Button variant="primary" type="submit" >Save Changes</Button>
