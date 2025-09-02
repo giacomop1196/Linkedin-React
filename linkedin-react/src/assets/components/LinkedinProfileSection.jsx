@@ -1,6 +1,48 @@
 import { Container, Row, Col, Card, Button, Image } from 'react-bootstrap';
+import { useState, useEffect } from 'react'
 import RightSidebar from './RightSidebar';
+
+
 const LinkedinProfileSection = () => {
+
+    const apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGI2OWYwMTE2MjdjNjAwMTVmOGM1NzQiLCJpYXQiOjE3NTY3OTg3MjEsImV4cCI6MTc1ODAwODMyMX0.VjKkV1KC8dmkreNZGJGpCu57OXIoO8X8RCIdYqspLm0'
+    const apiLink = `https://striveschool-api.herokuapp.com/api/profile/me`
+
+    const [isLoading, setIsLoading] = useState(true)
+    const [isError, setIsError] = useState(false)
+
+
+    useEffect(() => {
+        getResults()
+    },[])
+
+    //Funzione per recuperare i dati dall'api
+    const getResults = () => {
+
+        fetch(apiLink, {
+            method: 'GET',
+            headers: {
+                'Authorization': apiKey,
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((res) => {
+                if (res.ok) {
+                    return res.json()
+                }
+                throw new Error('Errore nel recupero dei dati')
+            })
+            .then((profile) => {
+                console.log(profile, 'dati profilo arrivati')
+            })
+            .catch((error) => {
+
+                console.error("Errore nel recupero dei dati:", error);
+                setIsLoading(false)
+                setIsError(true)
+            })
+    }
+
     return (
         <Container fluid className='bg-light d-flex px-5'>
             <Row className="justify-content-center">
