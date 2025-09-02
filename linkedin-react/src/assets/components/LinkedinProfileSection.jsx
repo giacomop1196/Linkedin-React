@@ -252,24 +252,23 @@ const LinkedinProfileSection = () => {
                                     </div>
 
                                     {/* Esperienze da ciclcare */}
-                                    <div className="d-flex mb-4">
-                                        <Image src="" rounded
-                                            style={{ width: '50px', height: '50px', objectFit: 'cover' }}
-                                            className="me-3" />
-                                        <div>
-                                            <h6 className="mb-0">Sviluppatore Web</h6>
-                                            <p className="text-muted mb-0">Cartmusic · A tempo pieno</p>
-                                            <p className="text-muted mb-0">nov 2024 - apr 2025 · 6 mesi</p>
-                                            <p className="text-muted mb-2">Palermo · Ibrido</p>
-                                            <p className="mb-2">
-                                                Sviluppo di Web Application in PHP con framework Laravel e Vue.js
-                                            </p>
-                                            <p className="fw-bold small">
-                                                <i className="bi bi-tag-fill" style={{ fontSize: '14px', marginRight: '5px' }}></i>
-                                                HTML5, SQL e +2 competenze
-                                            </p>
-                                        </div>
-                                    </div>
+                                    {resultsExperencies && resultsExperencies.length > 0 ? (
+                                        resultsExperencies.map((exp) => (
+                                            <div key={exp._id} className="d-flex mb-4">
+                                                <Image src='' rounded
+                                                    style={{ width: '50px', height: '50px', objectFit: 'cover' }}
+                                                    className="me-3" />
+                                                <div>
+                                                    <h6 className="mb-0">{exp.role}</h6>
+                                                    <p className="text-muted mb-0">{exp.company} · {exp.area}</p>
+                                                    <p className="text-muted mb-0">Da: {exp.startDate} - A: {exp.endDate || 'Presente'}</p>
+                                                    <p className="mb-2">{exp.description}</p>
+                                                </div>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <p>Nessuna esperienza da mostrare.</p>
+                                    )}
                                 </Card.Body>
                             </Card>
 
@@ -335,7 +334,7 @@ const LinkedinProfileSection = () => {
                         <Col>
                             <ProfileRightSidebar username={results.username} profileName={results.name} />
                         </Col>
-                        <AddExperiences show = {showExperenciesModal} closeModal={closeExperenciesModal} userId={results._id} ></AddExperiences>
+                        <AddExperiences show={showExperenciesModal} closeModal={closeExperenciesModal} userId={results._id} ></AddExperiences>
                     </Row>
                 </Container>
             )}

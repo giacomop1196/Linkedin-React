@@ -13,6 +13,7 @@ import Modal from "react-bootstrap/Modal";
 import { useEffect, useState } from "react";
 
 function AddExperiences({ show, closeModal, userId }) {
+  
   const [formValues, setFormValues] = useState({
     role: "",
     company: "",
@@ -21,7 +22,7 @@ function AddExperiences({ show, closeModal, userId }) {
     description: "",
     area: "",
   });
-  useEffect(() => {});
+
   const changeValues = (e) => {
     const { name, value } = e.target;
     setFormValues((prevState) => ({
@@ -45,12 +46,22 @@ function AddExperiences({ show, closeModal, userId }) {
     })
       .then((res) => {
         if (res.ok) {
-          setFormValues(formValues);
+          return res.json();
         }
         throw new Error("Errore nel recupero dei dati");
       })
       .then((experiences) => {
-        console.log(experiences, "dati esperienze arrivate:");
+        console.log(experiences, "Dati esperienza aggiunti:");
+        closeModal();
+        // Resetta i valori del form.
+        setFormValues({
+          role: "",
+          company: "",
+          startDate: "",
+          endDate: "",
+          description: "",
+          area: "",
+        });
       })
       .catch((error) => {
         console.error("Errore nel recupero dei dati:", error);
@@ -133,13 +144,13 @@ function AddExperiences({ show, closeModal, userId }) {
                 onChange={changeValues}
               />
             </Form.Group>
+            <Button variant="primary" type="submit" >Save Changes</Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={closeModal}>
             Close
           </Button>
-          <Button variant="primary" type="submit" >Save Changes</Button>
         </Modal.Footer>
       </Modal>
     </>

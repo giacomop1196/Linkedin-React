@@ -22,7 +22,7 @@ const NavBar = () => {
             >
               <Navbar.Brand href="#">
                 <i
-                  class="bi bi-linkedin"
+                  className="bi bi-linkedin"
                   style={{ fontSize: "1.8rem", color: "#0A66C2" }}
                 ></i>
               </Navbar.Brand>
@@ -33,9 +33,8 @@ const NavBar = () => {
                 <Form.Control
                   type=" search"
                   placeholder="🔍 Cerca"
-                  className="me-2"
+                  className="me-2 rounded-pill"
                   aria-label="Search"
-                  classNamer="rounded-pill"
                 />
               </Form>
               <Navbar.Toggle aria-controls="navbarScroll" />
@@ -101,7 +100,7 @@ const NavBar = () => {
                     <NavDropdown
                       title={
                         <img
-                          src="https://via.placeholder.com/32"
+                          src="https://yt3.googleusercontent.com/Jl_wJgbSzmfFqBXOVYTI-tdCDykgbzkhenHjSoigmZ5WGjDijWn5Y0aKTo6Z4HMSzOHvtu4p7g=s900-c-k-c0x00ffffff-no-rj"
                           alt="avatar"
                           className="rounded-circle d-flex flex-column align-items-center mx-4"
                           style={{

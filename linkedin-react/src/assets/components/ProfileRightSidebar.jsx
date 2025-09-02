@@ -30,17 +30,17 @@ const ProfileRightSidebar = (props) => {
     {
       id: 1,
       name: 'Qualcuno presso Università degli studi...',
-      image: 'https://via.placeholder.com/40x40/0077b5/ffffff?text=U'
+      image: 'https://yt3.googleusercontent.com/Jl_wJgbSzmfFqBXOVYTI-tdCDykgbzkhenHjSoigmZ5WGjDijWn5Y0aKTo6Z4HMSzOHvtu4p7g=s900-c-k-c0x00ffffff-no-rj'
     },
     {
       id: 2,
       name: 'Qualcuno presso Università degli studi...',
-      image: 'https://via.placeholder.com/40x40/0077b5/ffffff?text=U'
+      image: 'https://yt3.googleusercontent.com/Jl_wJgbSzmfFqBXOVYTI-tdCDykgbzkhenHjSoigmZ5WGjDijWn5Y0aKTo6Z4HMSzOHvtu4p7g=s900-c-k-c0x00ffffff-no-rj'
     },
     {
       id: 3,
       name: 'Qualcuno presso Edgemony',
-      image: 'https://via.placeholder.com/40x40/0077b5/ffffff?text=E'
+      image: 'https://yt3.googleusercontent.com/Jl_wJgbSzmfFqBXOVYTI-tdCDykgbzkhenHjSoigmZ5WGjDijWn5Y0aKTo6Z4HMSzOHvtu4p7g=s900-c-k-c0x00ffffff-no-rj'
     }
   ];
 
@@ -110,7 +110,7 @@ const ProfileRightSidebar = (props) => {
           <Card.Body className="p-3">
             <div className="d-flex align-items-center mb-2">
               <Image
-                src="https://via.placeholder.com/40x40/00a651/ffffff?text=I"
+                src="https://yt3.googleusercontent.com/Jl_wJgbSzmfFqBXOVYTI-tdCDykgbzkhenHjSoigmZ5WGjDijWn5Y0aKTo6Z4HMSzOHvtu4p7g=s900-c-k-c0x00ffffff-no-rj"
                 rounded
                 className="me-2"
                 style={{ width: '40px', height: '40px' }}
@@ -128,7 +128,7 @@ const ProfileRightSidebar = (props) => {
             </p>
             <div className="d-flex align-items-center mb-3">
               <Image
-                src="https://via.placeholder.com/24x24/0077b5/ffffff?text=B"
+                src="https://yt3.googleusercontent.com/Jl_wJgbSzmfFqBXOVYTI-tdCDykgbzkhenHjSoigmZ5WGjDijWn5Y0aKTo6Z4HMSzOHvtu4p7g=s900-c-k-c0x00ffffff-no-rj"
                 rounded
                 className="me-2"
                 style={{ width: '24px', height: '24px' }}
