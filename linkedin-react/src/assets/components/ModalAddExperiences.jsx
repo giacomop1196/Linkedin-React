@@ -11,6 +11,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useEffect, useState } from "react";
+
 function AddExperiences({ show, closeModal, userId }) {
   const [formValues, setFormValues] = useState({
     role: "",
@@ -20,14 +21,14 @@ function AddExperiences({ show, closeModal, userId }) {
     description: "",
     area: "",
   });
-    useEffect(() => { });
-    const changeValues = (e) => {
-        const { name, value } = e.target;
-        setFormValues(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
+  useEffect(() => {});
+  const changeValues = (e) => {
+    const { name, value } = e.target;
+    setFormValues((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
   const apiKey = import.meta.env.VITE_API_KEY;
   const addExperiences = (e) => {
@@ -36,6 +37,7 @@ function AddExperiences({ show, closeModal, userId }) {
 
     fetch(apiLinkExperiences, {
       method: "POST",
+      body: JSON.stringify(formValues),
       headers: {
         Authorization: "Bearer " + apiKey,
         "Content-Type": "application/json",
@@ -71,7 +73,8 @@ function AddExperiences({ show, closeModal, userId }) {
                 type="text"
                 placeholder="Add previous company"
                 autoFocus
-                value={formValues.role} 
+                name='role'
+                value={formValues.role}
                 onChange={changeValues}
               />
             </Form.Group>
@@ -81,7 +84,8 @@ function AddExperiences({ show, closeModal, userId }) {
                 type="text"
                 placeholder="Add previous company"
                 autoFocus
-                value={formValues.company} 
+                name='company'
+                value={formValues.company}
                 onChange={changeValues}
               />
             </Form.Group>
@@ -90,14 +94,20 @@ function AddExperiences({ show, closeModal, userId }) {
               <Form.Control
                 type="date"
                 autoFocus
-                value={formValues.startDate} 
+                name='startDate'
+                value={formValues.startDate}
                 onChange={changeValues}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>End Date</Form.Label>
-              <Form.Control type="date" autoFocus value={formValues.endDate} 
-              onChange={changeValues} />
+              <Form.Control
+                type="date"
+                autoFocus
+                name='endDate'
+                value={formValues.endDate}
+                onChange={changeValues}
+              />
             </Form.Group>
             <Form.Group
               className="mb-3"
@@ -107,7 +117,8 @@ function AddExperiences({ show, closeModal, userId }) {
               <Form.Control
                 as="textarea"
                 rows={3}
-                value={formValues.description} 
+                name='description'
+                value={formValues.description}
                 onChange={changeValues}
               />
             </Form.Group>
@@ -117,7 +128,8 @@ function AddExperiences({ show, closeModal, userId }) {
                 type="text"
                 placeholder="Where.."
                 autoFocus
-                value={formValues.area} 
+                name='area'
+                value={formValues.area}
                 onChange={changeValues}
               />
             </Form.Group>
@@ -127,7 +139,7 @@ function AddExperiences({ show, closeModal, userId }) {
           <Button variant="secondary" onClick={closeModal}>
             Close
           </Button>
-          <Button variant="primary">Save Changes</Button>
+          <Button variant="primary" type="submit" >Save Changes</Button>
         </Modal.Footer>
       </Modal>
     </>
