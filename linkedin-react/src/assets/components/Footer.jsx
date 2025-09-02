@@ -6,6 +6,8 @@ const Footer = () => {
     <div className="footer">
       <Container fluid className="px-4 py-5">
         <Row>
+          {/*prima colonna*/}
+
           <Col className="footer-column">
             <div className="d-flex flex-column ">
               <a href="#" className="ms-2">
@@ -14,7 +16,7 @@ const Footer = () => {
               <a href="#" className="ms-2">
                 Informativa sulla Community Professionale
               </a>
-
+              {/*primo dropdown*/}
               <Dropdown className="mt-2 ">
                 <Dropdown.Toggle className="btn-white btn-sm">
                   Privacy e condizioni
@@ -44,6 +46,7 @@ const Footer = () => {
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
+              {/* fine primo dropdown*/}
 
               <a href="#" className="mt-2 ms-2">
                 Sales Solutions
@@ -53,6 +56,9 @@ const Footer = () => {
               </a>
             </div>
           </Col>
+          {/*fine prima colonna*/}
+
+          {/*seconda colonna*/}
 
           <Col className="footer-column">
             <div className="d-flex flex-column">
@@ -62,6 +68,9 @@ const Footer = () => {
               <a href="#">Mobile</a>
             </div>
           </Col>
+          {/*fine seconda colonna*/}
+
+          {/*terza colonna*/}
 
           <Col className="footer-column">
             <div className="d-flex flex-column">
@@ -71,6 +80,9 @@ const Footer = () => {
               <a href="#">Piccole imprese</a>
             </div>
           </Col>
+          {/*fine terza colonna*/}
+
+          {/*quarta colonna*/}
 
           <Col>
             <div className="footer-icon-block">
@@ -85,21 +97,26 @@ const Footer = () => {
               <i className="bi bi-gear-fill"></i>
               <div>
                 <p className="mp">Gestisci il tuo account e la tua privacy</p>
-                <a href="#">Vai alle impostazioni</a>
+                <a href="#">Vai alle impostazioni.</a>
               </div>
             </div>
 
             <div className="footer-icon-block">
               <i className="bi bi-shield-slash"></i>
               <div>
-                <p className="mp">Trasparenza sui contenuti consigliati.</p>
+                <p className="mp">Trasparenza sui contenuti consigliati</p>
                 <a href="#">Scopri di più sui contenuti consigliati.</a>
               </div>
             </div>
           </Col>
+          {/*fine quarta colonna*/}
+
+          {/*quinta colonna*/}
+
           <Col>
             {" "}
             <div className="mb-2">Seleziona Lingua</div>
+            {/*secondo dropdown*/}
             <Dropdown className="lng">
               <Dropdown.Toggle className="btn-white" id="dropdown-basic">
                 Italiano (Italiano){" "}
@@ -116,7 +133,9 @@ const Footer = () => {
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
+            {/*fine secondo dropdown*/}
           </Col>
+          {/*fine quinta colonna*/}
         </Row>
         <Row className="mt-4">
           <Col className="text-muted ">

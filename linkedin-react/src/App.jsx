@@ -8,7 +8,7 @@ import 'bootstrap-icons/font/bootstrap-icons.min.css';
 import NavBar from './assets/components/Navbar';
 import LinkedinProfileSection from './assets/components/LinkedinProfileSection';
 import Footer from './assets/components/Footer';
-
+import MessageBox from './assets/components/MessageBox';
 
 
 // Componente principale dell'applicazione
@@ -16,6 +16,7 @@ function App() {
   return (
     <>
      <NavBar/>
+     <MessageBox></MessageBox>
      <LinkedinProfileSection/>
      <Footer/>
     </>
