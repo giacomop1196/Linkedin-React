@@ -8,7 +8,7 @@ import {
   Spinner,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import RightSidebar from "./RightSidebar";
+import ProfileRightSidebar from "./ProfileRightSidebar";
 
 const LinkedinProfileSection = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -390,7 +390,7 @@ const LinkedinProfileSection = () => {
               </Card>
             </Col>
             <Col>
-              <RightSidebar />
+              <ProfileRightSidebar />
             </Col>
           </Row>
         </Container>
