@@ -1,1 +1,7 @@
-.blue-link{color: #0A66C2}
+.blue-link {
+    color: #0A66C2
+}
+
+.pointer {
+  cursor: pointer;
+}

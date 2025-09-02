@@ -2,6 +2,7 @@ import { Container, Row, Col, Card, Button, Image, Spinner } from 'react-bootstr
 import { useState, useEffect } from 'react'
 import ProfileRightSidebar from './ProfileRightSidebar';
 import AddExperiences from './ModalAddExperiences';
+import ModalEditExperience from './ModalEditExperience';
 
 const LinkedinProfileSection = () => {
 
@@ -17,13 +18,30 @@ const LinkedinProfileSection = () => {
 
     const [resultsExperencies, setResultsExperencies] = useState(null)
 
+    // Modale Aggiungi Esperienza
     const [showExperenciesModal, setExperenciesModal] = useState(false);
 
+    // Funzione per aprire il Modale Aggiungi Esperienza
     const openExperenciesModal = () => {
         setExperenciesModal(true);
     };
+    // Funzione per chiudere il Modale Aggiungi Esperienza
     const closeExperenciesModal = () => {
         setExperenciesModal(false);
+    };
+
+    // Modale Modifica Esperienza
+    const [showEditExperencieModal, setEditExperencieModal] = useState(false);
+    const [selectedExperienceId, setSelectedExperienceId] = useState(null);
+
+    // Funzione per aprire il Modale Modifica Esperienza
+    const openEditExperencieModal = (experienceId) => {
+        setSelectedExperienceId(experienceId);
+        setEditExperencieModal(true);
+    };
+    // Funzione per chiudere il Modale Modifica Esperienza
+    const closeEditExperencieModal = () => {
+        setEditExperencieModal(false);
     };
 
     useEffect(() => {
@@ -246,7 +264,7 @@ const LinkedinProfileSection = () => {
                                     <div className="d-flex justify-content-between align-items-center mb-3">
                                         <Card.Title>Esperienza</Card.Title>
                                         <div>
-                                            <i className="bi bi-plus" style={{ fontSize: '24px', marginRight: '10px' }} onClick={openExperenciesModal}></i>
+                                            <i className="bi bi-plus pointer" style={{ fontSize: '24px', marginRight: '10px' }} onClick={openExperenciesModal}></i>
                                             <i className="bi bi-pencil"></i>
                                         </div>
                                     </div>
@@ -254,8 +272,9 @@ const LinkedinProfileSection = () => {
                                     {/* Esperienze da ciclcare */}
                                     {resultsExperencies && resultsExperencies.length > 0 ? (
                                         resultsExperencies.map((exp) => (
-                                            <div key={exp._id} className="d-flex mb-4">
-                                                <Image src='' rounded
+                                            <div key={exp._id} className="d-flex mb-4 pointer" onClick={() => openEditExperencieModal(exp._id)}>
+                                                <Image src='https://yt3.googleusercontent.com/Jl_wJgbSzmfFqBXOVYTI-tdCDykgbzkhenHjSoigmZ5WGjDijWn5Y0aKTo6Z4HMSzOHvtu4p7g=s900-c-k-c0x00ffffff-no-rj'
+                                                    rounded
                                                     style={{ width: '50px', height: '50px', objectFit: 'cover' }}
                                                     className="me-3" />
                                                 <div>
@@ -263,7 +282,7 @@ const LinkedinProfileSection = () => {
                                                     <p className="text-muted mb-0">{exp.company} · {exp.area}</p>
                                                     <p className="text-muted mb-0">Da: {exp.startDate} - A: {exp.endDate || 'Presente'}</p>
                                                     <p className="mb-2">{exp.description}</p>
-                                                </div>
+                                                </div>                
                                             </div>
                                         ))
                                     ) : (
@@ -286,7 +305,8 @@ const LinkedinProfileSection = () => {
 
                                     {/* Esperienze da ciclcare */}
                                     <div className="d-flex mb-4">
-                                        <Image src="" rounded
+                                        <Image src="https://yt3.googleusercontent.com/Jl_wJgbSzmfFqBXOVYTI-tdCDykgbzkhenHjSoigmZ5WGjDijWn5Y0aKTo6Z4HMSzOHvtu4p7g=s900-c-k-c0x00ffffff-no-rj"
+                                            rounded
                                             style={{ width: '50px', height: '50px', objectFit: 'cover' }}
                                             className="me-3" />
                                         <div>
@@ -319,7 +339,8 @@ const LinkedinProfileSection = () => {
 
                                     {/* Esperienze da ciclcare */}
                                     <div className="d-flex mb-4">
-                                        <Image src="" rounded
+                                        <Image src="https://yt3.googleusercontent.com/Jl_wJgbSzmfFqBXOVYTI-tdCDykgbzkhenHjSoigmZ5WGjDijWn5Y0aKTo6Z4HMSzOHvtu4p7g=s900-c-k-c0x00ffffff-no-rj"
+                                            rounded
                                             style={{ width: '50px', height: '50px', objectFit: 'cover' }}
                                             className="me-3" />
                                         <div>
@@ -334,7 +355,9 @@ const LinkedinProfileSection = () => {
                         <Col>
                             <ProfileRightSidebar username={results.username} profileName={results.name} />
                         </Col>
-                        <AddExperiences show={showExperenciesModal} closeModal={closeExperenciesModal} userId={results._id} ></AddExperiences>
+                        {/* Modale Aggiungi Esperienza */}
+                        <AddExperiences show={showExperenciesModal} closeModal={closeExperenciesModal} userId={results._id} />
+                         <ModalEditExperience showEdit={showEditExperencieModal} closeEditModal={closeEditExperencieModal} userId={results._id} experienceId={selectedExperienceId} />
                     </Row>
                 </Container>
             )}
