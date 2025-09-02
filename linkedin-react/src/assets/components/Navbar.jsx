@@ -131,7 +131,7 @@ const NavBar = () => {
                       onClick={clikShowDown}
                     >
                       <i
-                        className="bi bi-layout-text-window "
+                        className="bi bi-layout-text-window bi bi-compass-fill d-flex mx-2 fs-4 my-2"
                         style={{ fontSize: "1.5rem" }}
                       ></i>
                       <span style={{ fontSize: "0.80rem" }}>
