@@ -280,7 +280,7 @@ const LinkedinProfileSection = () => {
                                                 <div>
                                                     <h6 className="mb-0">{exp.role}</h6>
                                                     <p className="text-muted mb-0">{exp.company} · {exp.area}</p>
-                                                    <p className="text-muted mb-0">Da: {exp.startDate} - A: {exp.endDate || 'Presente'}</p>
+                                                    <p className="text-muted mb-0">Da: {exp.startDate.split("T")[0]} - A: {exp.endDate.split("T")[0] || 'Presente'}</p>
                                                     <p className="mb-2">{exp.description}</p>
                                                 </div>                
                                             </div>

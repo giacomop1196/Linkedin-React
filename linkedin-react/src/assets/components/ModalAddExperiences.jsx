@@ -122,7 +122,6 @@ function AddExperiences({ show, closeModal, userId, getExperencies }) {
                 name='endDate'
                 value={formValues.endDate}
                 onChange={changeValues}
-                required
               />
             </Form.Group>
             <Form.Group
@@ -149,6 +148,15 @@ function AddExperiences({ show, closeModal, userId, getExperencies }) {
                 value={formValues.area}
                 onChange={changeValues}
                 required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Img</Form.Label>
+              <Form.Control
+                type="file"
+                placeholder="Where.."
+                autoFocus
+           
               />
             </Form.Group>
             <Button variant="primary" type="submit" >Save Changes</Button>
