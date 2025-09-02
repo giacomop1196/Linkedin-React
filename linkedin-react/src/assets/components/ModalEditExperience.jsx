@@ -2,13 +2,19 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useEffect, useState } from "react";
+import DeleteExperience from "./deleteExperiece";
 
-function ModalEditExperience({ showEdit, closeEditModal, userId, experienceId }) {
+function ModalEditExperience({
+  showEdit,
+  closeEditModal,
+  userId,
+  experienceId,
+}) {
   const [resultExperencie, setResultExperencie] = useState(null);
 
   const apiKey = import.meta.env.VITE_API_KEY;
-  const apiLink = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${experienceId}`
-  const editApiLink = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${experienceId}`
+  const apiLink = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${experienceId}`;
+  const editApiLink = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${experienceId}`;
 
   const [formValues, setFormValues] = useState({
     role: "",
@@ -28,8 +34,7 @@ function ModalEditExperience({ showEdit, closeEditModal, userId, experienceId })
           Authorization: "Bearer " + apiKey,
           "Content-Type": "application/json",
         },
-      }
-      )
+      })
         .then((res) => {
           if (res.ok) {
             return res.json();
@@ -75,16 +80,14 @@ function ModalEditExperience({ showEdit, closeEditModal, userId, experienceId })
   // Funzione per modificare un esperienza
   const editExperience = (e) => {
     e.preventDefault();
-    fetch(editApiLink,
-      {
-        method: "PUT",
-        body: JSON.stringify(formValues),
-        headers: {
-          Authorization: "Bearer " + apiKey,
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    fetch(editApiLink, {
+      method: "PUT",
+      body: JSON.stringify(formValues),
+      headers: {
+        Authorization: "Bearer " + apiKey,
+        "Content-Type": "application/json",
+      },
+    })
       .then((res) => {
         if (res.ok) {
           return res.json();
@@ -107,9 +110,7 @@ function ModalEditExperience({ showEdit, closeEditModal, userId, experienceId })
   return (
     <Modal show={showEdit} onHide={closeEditModal}>
       <Modal.Header>
-        <Modal.Title>
-          Edit Experience
-        </Modal.Title>
+        <Modal.Title>Edit Experience</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={editExperience}>
@@ -169,9 +170,17 @@ function ModalEditExperience({ showEdit, closeEditModal, userId, experienceId })
             />
           </Form.Group>
           <div className="d-flex w-100 justify-content-between">
-            <p className="me-2">Delete experience</p>
+            <DeleteExperience
+              profile_id={userId}
+              experience_Id={experienceId}
+              closeEditModal={closeEditModal}
+            />
             <div>
-              <Button variant="secondary" onClick={closeEditModal} className="me-2">
+              <Button
+                variant="secondary"
+                onClick={closeEditModal}
+                className="me-2"
+              >
                 Close
               </Button>
               <Button variant="primary" type="submit">
