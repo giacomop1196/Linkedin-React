@@ -2,7 +2,7 @@ import { Container, Row, Col, Card, Button, Image } from 'react-bootstrap';
 import RightSidebar from './RightSidebar';
 const LinkedinProfileSection = () => {
     return (
-        <Container fluid className='bg-light d-flex'>
+        <Container fluid className='bg-light d-flex px-5'>
             <Row className="justify-content-center">
                 <Col xs={12} md={10} lg={8}>
                     <Card className="mt-4 mb-4">
@@ -31,7 +31,7 @@ const LinkedinProfileSection = () => {
                             </div>
                             <Row className="mt-3">
                                 <Col>
-                                    <h4>Giacomo Pillitteri <i className="bi bi-link-45deg" style={{ fontSize: '0.8em', color: '#0a66c2' }}></i></h4>
+                                    <h4>Giacomo Pillitteri <i className="bi bi-patch-check-fill" style={{ fontSize: '0.8em', color: '#0a66c2' }}></i></h4>
                                     <p className="text-muted">
                                         Sviluppatore JAVA | PHP | Laravel | MySQL | HTML5 | CSS | JavaScript | VUE | REACT
                                     </p>
@@ -217,13 +217,12 @@ const LinkedinProfileSection = () => {
                                     <p className="text-muted mb-0">nov 2024 - apr 2025 · 6 mesi</p>
                                 </div>
                             </div>
-
                         </Card.Body>
                     </Card>
                 </Col>
-            </Row>
-            <Row>
-                <RightSidebar />
+                <Col>
+                    <RightSidebar />
+                </Col>
             </Row>
         </Container>
     );
