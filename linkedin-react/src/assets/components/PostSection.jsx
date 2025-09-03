@@ -27,6 +27,7 @@ const PostSection = () => {
   const [isError, setIsError] = useState(false);
 
   const [posts, setPosts] = useState(null);
+  const [ultimiPosts, setUltimiPosts] = useState(null);
 
   const [result, setResult] = useState(null);
 
@@ -52,7 +53,10 @@ const PostSection = () => {
       .then((post) => {
         console.log(post, "dati profilo arrivati");
         setPosts(post);
+        ultimiPost(post)
         setIsLoading(false);
+      })
+      .then(() => {
       })
       .catch((error) => {
         console.error("Errore nel recupero dei dati:", error);
@@ -92,16 +96,24 @@ const PostSection = () => {
   };
 
   // Modale Aggiungi Esperienza
-    const [showAddPostModal, setAddPostModal] = useState(false);
+  const [showAddPostModal, setAddPostModal] = useState(false);
 
   // Funzione per aprire il Modale Aggiungi Esperienza
-    const openAddPostModal = () => {
-        setAddPostModal(true);
-    };
-    // Funzione per chiudere il Modale Aggiungi Esperienza
-    const closeAddPostModal = () => {
-        setAddPostModal(false);
-    };
+  const openAddPostModal = () => {
+    setAddPostModal(true);
+  };
+  // Funzione per chiudere il Modale Aggiungi Esperienza
+  const closeAddPostModal = () => {
+    setAddPostModal(false);
+  };
+
+  // Funzione per recuperare gli ultimi 30 post
+  const ultimiPost = (posts) => {
+    const indiceDiPartenza = posts.length - 30;
+    const ultimiTrentaElementi = posts.slice(indiceDiPartenza);
+    setUltimiPosts(ultimiTrentaElementi.reverse());
+    console.log(ultimiTrentaElementi);
+  }
 
   return (
     <>
@@ -124,7 +136,7 @@ const PostSection = () => {
         <Container fluid className="min-vh-100 bg-light">
           <Row className="p-5">
             <Alert variant="danger" className="text-center">
-              <i class="bi bi-exclamation-triangle-fill"></i> Errore nel
+              <i className="bi bi-exclamation-triangle-fill"></i> Errore nel
               recupero dei dati!
             </Alert>
           </Row>
@@ -139,22 +151,22 @@ const PostSection = () => {
           <Col xs={12} md={10} lg={8} className="w-25">
             <div className="p-3">
               {/* Barra di creazione post */}
-              {result && 
+              {result &&
 
-              <div className="d-flex align-items-center mb-3">
-                <Image
+                <div className="d-flex align-items-center mb-3">
+                  <Image
                     src={result.image}
                     alt="User Profile"
                     className="rounded-circle me-2"
                     style={{ width: '45px', height: '40px' }}
-                />
-                <input
+                  />
+                  <input
                     type="text"
                     className="form-control rounded-pill"
                     placeholder="Crea un post"
                     onClick={openAddPostModal}
-                />
-            </div>
+                  />
+                </div>
 
               }
 
@@ -187,8 +199,8 @@ const PostSection = () => {
 
               {/* Card del post */}
 
-              {posts && posts.length > 0 ? (
-                posts.map((post) => (
+              {ultimiPosts && ultimiPosts.length > 0 ? (
+                ultimiPosts.map((post) => (
                   <Card className="shadow-sm mb-3" key={post._id}>
                     <Card.Body>
                       <div className="d-flex justify-content-between align-items-start mb-2">
