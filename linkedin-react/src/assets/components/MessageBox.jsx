@@ -1,6 +1,10 @@
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Image } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
 const MessageBox = () => {
+
+  const profileData = useSelector((state) => state.profile.data);
+
   return (
     <div style={{
       position: 'fixed',
@@ -9,11 +13,12 @@ const MessageBox = () => {
       width: '300px',
       zIndex: '1000'
     }}>
+      {profileData && 
       <Card className='rounded-bottom-0'>
         <Card.Header className="d-flex justify-content-between align-items-center">
           <div className="d-flex align-items-center">
-            <img 
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp4yuU5Y7hjAdc-Mp8qTZZ4lhIWvkv-Dsz0Q&s"
+            <Image
+              src={profileData.image}
               alt="Avatar" 
               className="rounded-circle me-2" 
               style={{ width: '30px', height: '30px' }} 
@@ -33,7 +38,9 @@ const MessageBox = () => {
           </div>
         </Card.Header>
       </Card>
+      }
     </div>
+      
   );
 };
 

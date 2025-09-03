@@ -1,7 +1,10 @@
-import React from 'react';
 import { Card, Button, Image } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
 const RightSidebar = () => {
+
+  const profileData = useSelector((state) => state.profile.data);
+
   const newsItems = [
     {
       id: 1,
@@ -48,11 +51,12 @@ const RightSidebar = () => {
       </Card>
 
       {/* Profile Update Ad */}
+      {profileData && 
       <Card className="mb-2 shadow-sm border-0">
         <Card.Body className="p-2">
           <div className="d-flex align-items-center mb-2">
             <Image
-              src="https://yt3.googleusercontent.com/Jl_wJgbSzmfFqBXOVYTI-tdCDykgbzkhenHjSoigmZ5WGjDijWn5Y0aKTo6Z4HMSzOHvtu4p7g=s900-c-k-c0x00ffffff-no-rj"
+              src={profileData.image}
               roundedCircle
               style={{ width: '35px', height: '35px' }}
               className="me-2"
@@ -73,6 +77,7 @@ const RightSidebar = () => {
           </Button>
         </Card.Body>
       </Card>
+}
 
       {/* Footer Links */}
       <div className="text-center">

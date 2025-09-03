@@ -41,7 +41,7 @@ const NavBar = () => {
                   aria-label="Search"
                 />
               </Form>
-              <Navbar.Toggle aria-controls="navbarScroll" />
+              <Navbar.Toggle />
               <Navbar.Collapse id="navbarScroll">
                 <Nav
                   className="mx-auto my-2 my-lg-0 justify-content-center"

@@ -2,25 +2,32 @@ import { Container, Row, Col, Card, Dropdown, Alert, Spinner, Image } from 'reac
 import { useState, useEffect } from 'react'
 import LeftSidebar from './LeftSidebar';
 import RightSidebar from './RightSidebar';
+import { setProfileData } from '../components/redux/profileSlice';
+import { useDispatch } from 'react-redux';
 
 const PostSection = () => {
 
   const apiKey = import.meta.env.VITE_API_KEY;
 
-  const apiLink = `https://striveschool-api.herokuapp.com/api/posts/`
+  const apiLinkPost = `https://striveschool-api.herokuapp.com/api/posts/`
+
+  const apiLinkProfile = `https://striveschool-api.herokuapp.com/api/profile/me`
 
   const [isLoading, setIsLoading] = useState(true)
   const [isError, setIsError] = useState(false)
 
   const [posts, setPosts] = useState(null)
 
+  const [result, setResult] = useState(null)
+
   useEffect(() => {
+    getProfile()
     getPosts()
   }, [])
 
   const getPosts = () => {
 
-    fetch(apiLink, {
+    fetch(apiLinkPost, {
       method: 'GET',
       headers: {
         'Authorization': 'Bearer ' + apiKey,
@@ -36,6 +43,40 @@ const PostSection = () => {
       .then((post) => {
         console.log(post, 'dati profilo arrivati')
         setPosts(post)
+        setIsLoading(false)
+      })
+      .catch((error) => {
+
+        console.error("Errore nel recupero dei dati:", error);
+        setIsLoading(false)
+        setIsError(true)
+      })
+  }
+
+
+
+  const dispatch = useDispatch();
+
+  //Funzione per recuperare i dati del profilo
+  const getProfile = () => {
+
+    fetch(apiLinkProfile, {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer ' + apiKey,
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json()
+        }
+        throw new Error('Errore nel recupero dei dati')
+      })
+      .then((profile) => {
+        console.log(profile, 'dati profilo arrivati')
+        dispatch(setProfileData(profile));
+        setResult(profile)
         setIsLoading(false)
       })
       .catch((error) => {
@@ -72,17 +113,17 @@ const PostSection = () => {
       <Container fluid className='bg-light d-flex px-5 justify-content-center'>
         <Row className="justify-content-center">
           <Col xs={12} md={10} lg={2}>
-            <LeftSidebar />
+           <LeftSidebar />
           </Col>
           <Col xs={12} md={10} lg={8} className='w-25'>
             <div className="p-3">
               {/* Barra di creazione post */}
               <div className="d-flex align-items-center mb-3">
-                <img
-                  src="URL_IMMAGINE_PROFILO_UTENTE"
+                <Image
+                  src={result.image}
                   alt="User Profile"
                   className="rounded-circle me-2"
-                  style={{ width: '40px', height: '40px' }}
+                  style={{ width: '45px', height: '40px' }}
                 />
                 <input
                   type="text"

@@ -4,6 +4,7 @@ import ProfileRightSidebar from './ProfileRightSidebar';
 import AddExperiences from './ModalAddExperiences';
 import ModalEditExperience from './ModalEditExperience';
 
+
 const LinkedinProfileSection = () => {
 
     const apiKey = import.meta.env.VITE_API_KEY;
@@ -48,7 +49,8 @@ const LinkedinProfileSection = () => {
         getResults()
     }, [])
 
-    //Funzione per recuperare i dati dall'api
+
+    //Funzione per recuperare i dati del profilo
     const getResults = () => {
 
         fetch(apiLink, {
