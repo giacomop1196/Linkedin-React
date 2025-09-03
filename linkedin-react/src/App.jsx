@@ -6,6 +6,7 @@ import NavBar from './assets/components/Navbar';
 import LinkedinProfileSection from './assets/components/LinkedinProfileSection';
 import Footer from './assets/components/Footer';
 import MessageBox from './assets/components/MessageBox';
+import HomePage from './assets/components/HomePage';
 import PostSection from './assets/components/PostSection';
 
 
@@ -18,6 +19,7 @@ function App() {
         <MessageBox></MessageBox>
         <Routes>
           <Route path='/' element={<PostSection />} />
+          <Route path='/home' element={<HomePage />} />
           <Route path='/profile' element={<LinkedinProfileSection />} />
         </Routes>
         <Footer />
