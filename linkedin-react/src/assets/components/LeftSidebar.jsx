@@ -1,11 +1,20 @@
 import React from 'react';
 import { Card, Button, Image } from 'react-bootstrap';
+import { Link, useNavigate } from "react-router-dom";
 
 const LeftSidebar = () => {
+
+  const navigate = useNavigate();
+
+  const goToProfile = () => {
+
+    navigate('/profile');
+  };
+
   return (
     <>
       {/* Profile Card */}
-      <Card className="mb-3 shadow-sm border-0 w-50">
+      <Card className="mb-3 shadow-sm border-0">
         <div className="position-relative">
           {/* Background Image */}
           <div
@@ -26,7 +35,7 @@ const LeftSidebar = () => {
         </div>
         <Card.Body className="pt-5 text-center">
           <div className="d-flex align-items-center justify-content-center mb-2">
-            <h5 className="mb-0 me-2">Giacomo Pillitteri</h5>
+            <Link to="/profile" className='text-black'><h5 className="mb-0 me-2">Giacomo Pillitteri</h5></Link>
             <i className="bi bi-patch-check-fill text-primary"></i>
           </div>
           <p className="text-muted small mb-2">
@@ -44,14 +53,14 @@ const LeftSidebar = () => {
             />
             <span className="small text-muted">EPICODE Institute of Technology</span>
           </div>
-          <Button variant="outline-primary" size="sm" className="w-100 rounded-pill mb-2">
+          <Button onClick={goToProfile} variant="outline-primary" size="sm" className="w-100 rounded-pill mb-2">
             Mostra profilo
           </Button>
         </Card.Body>
       </Card>
 
       {/* Profile Analytics */}
-      <Card className="mb-3 shadow-sm border-0 w-50">
+      <Card className="mb-3 shadow-sm border-0">
         <Card.Body className="p-3">
           <div className="d-flex justify-content-between align-items-center">
             <div>
@@ -66,7 +75,7 @@ const LeftSidebar = () => {
       </Card>
 
       {/* Premium Offer */}
-      <Card className="mb-3 shadow-sm border-0 w-50">
+      <Card className="mb-3 shadow-sm border-0">
         <Card.Body className="p-3">
           <h6 className="mb-2 fw-semibold">Trova lavoro più velocemente con Premium</h6>
           <p className="small text-muted mb-3">
@@ -79,7 +88,7 @@ const LeftSidebar = () => {
       </Card>
 
       {/* Navigation Links */}
-      <Card className="mb-3 shadow-sm border-0 w-50">
+      <Card className="mb-3 shadow-sm border-0">
         <Card.Body className="p-3">
           <div className="d-flex align-items-center mb-3">
             <i className="bi bi-bookmark me-3 text-muted"></i>

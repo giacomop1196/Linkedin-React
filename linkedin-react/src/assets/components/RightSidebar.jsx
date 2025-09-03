@@ -26,7 +26,7 @@ const RightSidebar = () => {
   return (
     <>
       {/* LinkedIn News */}
-      <Card className="mb-3 shadow-sm border-0 w-50">
+      <Card className="mb-3 shadow-sm border-0">
         <Card.Header className="bg-transparent border-0 pb-0">
           <h6 className="mb-0 fw-semibold">LinkedIn Notizie</h6>
           <p className="small text-muted mb-0">Storie principali</p>
@@ -48,7 +48,7 @@ const RightSidebar = () => {
       </Card>
 
       {/* Profile Update Ad */}
-      <Card className="mb-2 shadow-sm border-0 w-50">
+      <Card className="mb-2 shadow-sm border-0">
         <Card.Body className="p-2">
           <div className="d-flex align-items-center mb-2">
             <Image
@@ -75,7 +75,7 @@ const RightSidebar = () => {
       </Card>
 
       {/* Footer Links */}
-      <div className="text-center w-50">
+      <div className="text-center">
         <div className="d-flex flex-wrap justify-content-center mb-1">
           <Button variant="link" className="p-0 text-muted small">Informazioni</Button>
           <Button variant="link" className="p-0 text-muted small">Accessibilità</Button>
