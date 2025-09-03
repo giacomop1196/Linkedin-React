@@ -16,7 +16,7 @@ const NavBar = () => {
     setShowDown(!showDown);
   };
   return (
-    <Container fluid className="bg-light border-bottom">
+    <Container fluid className="bg-withe border-bottom ">
       <Row className="justify-content-center p-0">
         <Col xs={12} md={10} lg={8} className="p-0">
           <Navbar expand="lg" className="bg-body-light h6">
@@ -100,7 +100,7 @@ const NavBar = () => {
                         <Image
                           src="https://yt3.googleusercontent.com/Jl_wJgbSzmfFqBXOVYTI-tdCDykgbzkhenHjSoigmZ5WGjDijWn5Y0aKTo6Z4HMSzOHvtu4p7g=s900-c-k-c0x00ffffff-no-rj"
                           alt="avatar"
-                          className="rounded-circle d-flex flex-column align-items-center mx-4"
+                          className="rounded-circle d-flex flex-column align-items-center"
                           style={{
                             width: "25px",
                             height: "25px",
@@ -137,6 +137,20 @@ const NavBar = () => {
                       <span style={{ fontSize: "0.80rem" }}>
                         Per le aziende
                       </span>
+                    </div>
+                    <div>
+                      <div
+                        style={{ color: "brown" }}
+                        className="border-bottom d-flex align-content-center ms-4 mb-1"
+                      >
+                        <h6>Prova Premium per 0</h6>
+                      </div>
+                      <div
+                        style={{ color: "brown" }}
+                        className="border-bottom d-flex  ms-lg-5 mx-lg-5 mb-auto  justify-content-center "
+                      >
+                        <h6> EUR</h6>
+                      </div>
                     </div>
                   </div>
                 </Nav>
