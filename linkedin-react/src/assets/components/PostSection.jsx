@@ -5,6 +5,7 @@ import RightSidebar from './RightSidebar';
 import { setProfileData } from '../components/redux/profileSlice';
 import { useDispatch } from 'react-redux';
 import LinearProgress from '@mui/material/LinearProgress';
+import AddPost from './AddPost';
 
 const PostSection = () => {
 
@@ -121,19 +122,7 @@ const PostSection = () => {
             <div className="p-3">
               {/* Barra di creazione post */}
               {result &&
-                <div className="d-flex align-items-center mb-3">
-                  <Image
-                    src={result.image}
-                    alt="User Profile"
-                    className="rounded-circle me-2"
-                    style={{ width: '45px', height: '40px' }}
-                  />
-                  <input
-                    type="text"
-                    className="form-control rounded-pill"
-                    placeholder="Crea un post"
-                  />
-                </div>
+              <AddPost/>
               }
 
               {/* Bottoni d'azione */}
