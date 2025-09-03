@@ -6,25 +6,24 @@ const AddPost = () => {
 
 
     const profileData = useSelector((state) => state.profile.data);
+    const apiLink = 'https://striveschool-api.herokuapp.com/api/posts/'
+    const apiKey = import.meta.env.VITE_API_KEY;
 
-    
-      const [formValues, setFormValues] = useState({
+    const [formValues, setFormValues] = useState({
         text: "",
-      });
-    
-      const changeValues = (e) => {
+    });
+
+    const changeValues = (e) => {
         const { name, value } = e.target;
         setFormValues((prevState) => ({
-          ...prevState,
-          [name]: value,
+            ...prevState,
+            [name]: value,
         }));
-      };
+    };
 
     const addPost = (e) => {
 
         e.preventDefault();
-
-        apiLink = 'https://striveschool-api.herokuapp.com/api/posts/'
 
         fetch(apiLink, {
             method: "POST",
