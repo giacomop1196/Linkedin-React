@@ -4,6 +4,7 @@ import LeftSidebar from './LeftSidebar';
 import RightSidebar from './RightSidebar';
 import { setProfileData } from '../components/redux/profileSlice';
 import { useDispatch } from 'react-redux';
+import LinearProgress from '@mui/material/LinearProgress';
 
 const PostSection = () => {
 
@@ -92,9 +93,10 @@ const PostSection = () => {
       {/* Spinner */}
       {isLoading && (
         <Container fluid className="min-vh-100 bg-light">
-          <Row className="p-5">
-            <div className="text-center mb-3">
-              <Spinner animation="grow" />
+          <Row className="d-flex align-items-center">
+            <div className="text-center">
+              <Image src='./img/LinkedIn_2021.svg' className='h-25 w-25'/>
+              <LinearProgress className='mt-5' />
             </div>
           </Row>
         </Container>
