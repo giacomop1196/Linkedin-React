@@ -113,24 +113,26 @@ const PostSection = () => {
       <Container fluid className='bg-light d-flex px-5 justify-content-center'>
         <Row className="justify-content-center">
           <Col xs={12} md={10} lg={2}>
-           <LeftSidebar />
+            <LeftSidebar />
           </Col>
           <Col xs={12} md={10} lg={8} className='w-25'>
             <div className="p-3">
               {/* Barra di creazione post */}
-              <div className="d-flex align-items-center mb-3">
-                <Image
-                  src={result.image}
-                  alt="User Profile"
-                  className="rounded-circle me-2"
-                  style={{ width: '45px', height: '40px' }}
-                />
-                <input
-                  type="text"
-                  className="form-control rounded-pill"
-                  placeholder="Crea un post"
-                />
-              </div>
+              {result &&
+                <div className="d-flex align-items-center mb-3">
+                  <Image
+                    src={result.image}
+                    alt="User Profile"
+                    className="rounded-circle me-2"
+                    style={{ width: '45px', height: '40px' }}
+                  />
+                  <input
+                    type="text"
+                    className="form-control rounded-pill"
+                    placeholder="Crea un post"
+                  />
+                </div>
+              }
 
               {/* Bottoni d'azione */}
               <div className="d-flex justify-content-around mb-3 text-muted">
