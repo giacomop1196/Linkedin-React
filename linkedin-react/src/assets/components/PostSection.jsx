@@ -14,7 +14,7 @@ import RightSidebar from "./RightSidebar";
 import { setProfileData } from "../components/redux/profileSlice";
 import { useDispatch } from "react-redux";
 import LinearProgress from "@mui/material/LinearProgress";
-import AddPost from "./AddPost";
+import ModalAddPost from "./ModalAddPost";
 
 const PostSection = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -91,6 +91,18 @@ const PostSection = () => {
       });
   };
 
+  // Modale Aggiungi Esperienza
+    const [showAddPostModal, setAddPostModal] = useState(false);
+
+  // Funzione per aprire il Modale Aggiungi Esperienza
+    const openAddPostModal = () => {
+        setAddPostModal(true);
+    };
+    // Funzione per chiudere il Modale Aggiungi Esperienza
+    const closeAddPostModal = () => {
+        setAddPostModal(false);
+    };
+
   return (
     <>
       {/* Spinner */}
@@ -127,7 +139,24 @@ const PostSection = () => {
           <Col xs={12} md={10} lg={8} className="w-25">
             <div className="p-3">
               {/* Barra di creazione post */}
-              {result && <AddPost />}
+              {result && 
+
+              <div className="d-flex align-items-center mb-3">
+                <Image
+                    src={result.image}
+                    alt="User Profile"
+                    className="rounded-circle me-2"
+                    style={{ width: '45px', height: '40px' }}
+                />
+                <input
+                    type="text"
+                    className="form-control rounded-pill"
+                    placeholder="Crea un post"
+                    onClick={openAddPostModal}
+                />
+            </div>
+
+              }
 
               {/* Bottoni d'azione */}
               <div className="d-flex justify-content-around mb-3 text-muted">
@@ -242,6 +271,7 @@ const PostSection = () => {
                 <p>Nessun post da mostrare.</p>
               )}
             </div>
+            <ModalAddPost show={showAddPostModal} closeModal={closeAddPostModal} />
           </Col>
           <Col xs={12} md={10} lg={2}>
             <RightSidebar />
