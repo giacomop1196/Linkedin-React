@@ -1,5 +1,7 @@
 import { Container, Row, Col, Card, Dropdown, Alert, Spinner, Image } from 'react-bootstrap';
 import { useState, useEffect } from 'react'
+import LeftSidebar from './LeftSidebar';
+import RightSidebar from './RightSidebar';
 
 const PostSection = () => {
 
@@ -69,7 +71,10 @@ const PostSection = () => {
       {/* Container Principale */}
       <Container fluid className='bg-light d-flex px-5 justify-content-center'>
         <Row className="justify-content-center">
-          <Col xs={12} md={10} lg={8}>
+          <Col>
+            <LeftSidebar />
+          </Col>
+          <Col xs={12} md={10} lg={8} className='w-25'>
             <div className="p-3">
               {/* Barra di creazione post */}
               <div className="d-flex align-items-center mb-3">
@@ -156,30 +161,31 @@ const PostSection = () => {
                       </div>
 
                       {/* Immagine del post */}
-                      <div className="position-relative">
-                        <Card.Img
-                          src="https://yt3.googleusercontent.com/Zb8cRN_XEfYIEZWAbmjl3MVVd52rJ5moGp9ODcLX1A4eKiEWZc8Uxw_Vf_t9ygLypKZSq927slw=s900-c-k-c0x00ffffff-no-rj"
-                          alt="Post Image"
-                          className="mt-2 rounded"
-                        />
-                        <div
-                          className="position-absolute bottom-0 start-0 p-3 w-100 text-white text-center"
-                          style={{
-                            background: 'linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0))',
-                          }}
-                        >
-
+                      {post.image && (
+                        <div className="position-relative">
+                          <Card.Img
+                            src={post.image}
+                            alt="Post Image"
+                            className="mt-2 rounded"
+                          />
+                          <div
+                            className="position-absolute bottom-0 start-0 p-3 w-100 text-white text-center"
+                            style={{
+                              background: 'linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0))',
+                            }}
+                          ></div>
                         </div>
-
-                      </div>
+                      )}
                     </Card.Body>
                   </Card>
                 ))
               ) : (
                 <p>Nessun post da mostrare.</p>
               )}
-
             </div>
+          </Col>
+          <Col>
+            <RightSidebar />
           </Col>
         </Row>
       </Container>

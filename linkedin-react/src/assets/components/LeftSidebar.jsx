@@ -3,14 +3,14 @@ import { Card, Button, Image } from 'react-bootstrap';
 
 const LeftSidebar = () => {
   return (
-    <div className="left-sidebar">
+    <>
       {/* Profile Card */}
-      <Card className="mb-3 shadow-sm border-0">
+      <Card className="mb-3 shadow-sm border-0 w-50">
         <div className="position-relative">
           {/* Background Image */}
-          <div 
+          <div
             className="bg-primary"
-            style={{ 
+            style={{
               height: '60px',
               background: 'linear-gradient(135deg, #0A66C2 0%, #004182 100%)'
             }}
@@ -51,7 +51,7 @@ const LeftSidebar = () => {
       </Card>
 
       {/* Profile Analytics */}
-      <Card className="mb-3 shadow-sm border-0">
+      <Card className="mb-3 shadow-sm border-0 w-50">
         <Card.Body className="p-3">
           <div className="d-flex justify-content-between align-items-center">
             <div>
@@ -66,7 +66,7 @@ const LeftSidebar = () => {
       </Card>
 
       {/* Premium Offer */}
-      <Card className="mb-3 shadow-sm border-0">
+      <Card className="mb-3 shadow-sm border-0 w-50">
         <Card.Body className="p-3">
           <h6 className="mb-2 fw-semibold">Trova lavoro più velocemente con Premium</h6>
           <p className="small text-muted mb-3">
@@ -79,7 +79,7 @@ const LeftSidebar = () => {
       </Card>
 
       {/* Navigation Links */}
-      <Card className="mb-3 shadow-sm border-0">
+      <Card className="mb-3 shadow-sm border-0 w-50">
         <Card.Body className="p-3">
           <div className="d-flex align-items-center mb-3">
             <i className="bi bi-bookmark me-3 text-muted"></i>
@@ -99,7 +99,7 @@ const LeftSidebar = () => {
           </div>
         </Card.Body>
       </Card>
-    </div>
+    </>
   );
 };
 

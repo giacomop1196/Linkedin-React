@@ -24,31 +24,31 @@ const RightSidebar = () => {
   ];
 
   return (
-    <div className="right-sidebar">
+    <>
       {/* LinkedIn News */}
-      <Card className="mb-3 shadow-sm border-0">
+      <Card className="mb-3 shadow-sm border-0 w-50">
         <Card.Header className="bg-transparent border-0 pb-0">
           <h6 className="mb-0 fw-semibold">LinkedIn Notizie</h6>
           <p className="small text-muted mb-0">Storie principali</p>
         </Card.Header>
-                 <Card.Body className="pt-2">
-           {newsItems.map((item, index) => (
-             <div key={item.id} className={`${index < newsItems.length - 1 ? 'mb-2 pb-2 border-bottom' : ''}`}>
-               <h6 className="small mb-1 fw-semibold">{item.title}</h6>
-               <div className="d-flex justify-content-between align-items-center">
-                 <span className="small text-muted">{item.time}</span>
-                 <span className="small text-muted">{item.readers}</span>
-               </div>
-             </div>
-           ))}
-           <Button variant="link" className="p-0 text-primary small mt-1">
-             Mostra altro
-           </Button>
-         </Card.Body>
+        <Card.Body className="pt-2">
+          {newsItems.map((item, index) => (
+            <div key={item.id} className={`${index < newsItems.length - 1 ? 'mb-2 pb-2 border-bottom' : ''}`}>
+              <h6 className="small mb-1 fw-semibold">{item.title}</h6>
+              <div className="d-flex justify-content-between align-items-center">
+                <span className="small text-muted">{item.time}</span>
+                <span className="small text-muted">{item.readers}</span>
+              </div>
+            </div>
+          ))}
+          <Button variant="link" className="p-0 text-primary small mt-1">
+            Mostra altro
+          </Button>
+        </Card.Body>
       </Card>
 
       {/* Profile Update Ad */}
-      <Card className="mb-2 shadow-sm border-0">
+      <Card className="mb-2 shadow-sm border-0 w-50">
         <Card.Body className="p-2">
           <div className="d-flex align-items-center mb-2">
             <Image
@@ -61,7 +61,7 @@ const RightSidebar = () => {
               <h6 className="mb-0 fw-semibold small">Finisci di aggiornare il tuo profilo</h6>
               <small className="text-muted">Annuncio</small>
             </div>
-            <div 
+            <div
               className="bg-primary rounded d-flex align-items-center justify-content-center"
               style={{ width: '25px', height: '25px' }}
             >
@@ -75,7 +75,7 @@ const RightSidebar = () => {
       </Card>
 
       {/* Footer Links */}
-      <div className="text-center">
+      <div className="text-center w-50">
         <div className="d-flex flex-wrap justify-content-center mb-1">
           <Button variant="link" className="p-0 text-muted small">Informazioni</Button>
           <Button variant="link" className="p-0 text-muted small">Accessibilità</Button>
@@ -97,7 +97,7 @@ const RightSidebar = () => {
           LinkedIn LinkedIn Corporation © 2025
         </p>
       </div>
-    </div>
+    </>
   );
 };
 
