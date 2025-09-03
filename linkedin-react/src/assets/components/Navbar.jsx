@@ -2,10 +2,14 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Image } from "react-bootstrap";
 import { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const NavBar = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const [showDown, setShowDown] = useState(false);
 
   const clikShowDown = () => {
@@ -13,7 +17,7 @@ const NavBar = () => {
   };
   return (
     <Container fluid className="bg-light border-bottom">
-      <Row fluid className="justify-content-center p-0">
+      <Row className="justify-content-center p-0">
         <Col xs={12} md={10} lg={8} className="p-0">
           <Navbar expand="lg" className="bg-body-light h6">
             <Container
@@ -45,21 +49,24 @@ const NavBar = () => {
                   navbarScroll
                 >
                   <div className="d-flex border-end">
-                    <Nav.Link
-                      href="#lavoro"
-                      className="d-flex flex-column align-items-center mx-3"
-                    >
+                    <Nav.Link className="d-flex flex-column align-items-center mx-3">
                       {" "}
                       <i
-                        className="bi bi-house-door-fill"
+                        className={
+                          location.pathname === "/"
+                            ? "blue-link bi bi-house-door-fill"
+                            : "bi bi-house-door-fill"
+                        }
                         style={{ fontSize: "1.5rem" }}
                       ></i>
-                      <span style={{ fontSize: "0.75rem" }}>Home</span>
+                      <Link
+                        className={location.pathname === "/" ? "blue-link" : ""}
+                        to="/"
+                      >
+                        <span style={{ fontSize: "0.75rem" }}>Home</span>
+                      </Link>
                     </Nav.Link>
-                    <Nav.Link
-                      href="#lavoro"
-                      className="d-flex flex-column align-items-center mx-3"
-                    >
+                    <Nav.Link className="d-flex flex-column align-items-center mx-3">
                       {" "}
                       <i
                         className="bi bi-people-fill"
@@ -67,30 +74,21 @@ const NavBar = () => {
                       ></i>
                       <span style={{ fontSize: "0.75rem" }}>Rete</span>
                     </Nav.Link>
-                    <Nav.Link
-                      href="#lavoro"
-                      className="d-flex flex-column align-items-center mx-3"
-                    >
+                    <Nav.Link className="d-flex flex-column align-items-center mx-3">
                       <i
                         className="bi bi-briefcase-fill"
                         style={{ fontSize: "1.5rem" }}
                       ></i>
                       <span style={{ fontSize: "0.75rem" }}>Lavoro</span>
                     </Nav.Link>
-                    <Nav.Link
-                      href="#messaggi"
-                      className="d-flex flex-column align-items-center mx-3"
-                    >
+                    <Nav.Link className="d-flex flex-column align-items-center mx-3">
                       <i
                         className="bi bi-chat-dots-fill"
                         style={{ fontSize: "1.5rem" }}
                       ></i>
                       <span style={{ fontSize: "0.75rem" }}>Messaggistica</span>
                     </Nav.Link>
-                    <Nav.Link
-                      href="#notifiche"
-                      className="d-flex flex-column align-items-center mx-3"
-                    >
+                    <Nav.Link className="d-flex flex-column align-items-center mx-3">
                       <i
                         className="bi bi-bell-fill"
                         style={{ fontSize: "1.5rem" }}
@@ -99,7 +97,7 @@ const NavBar = () => {
                     </Nav.Link>
                     <NavDropdown
                       title={
-                        <img
+                        <Image
                           src="https://yt3.googleusercontent.com/Jl_wJgbSzmfFqBXOVYTI-tdCDykgbzkhenHjSoigmZ5WGjDijWn5Y0aKTo6Z4HMSzOHvtu4p7g=s900-c-k-c0x00ffffff-no-rj"
                           alt="avatar"
                           className="rounded-circle d-flex flex-column align-items-center mx-4"
@@ -113,14 +111,17 @@ const NavBar = () => {
                       id="nav-avatar-dropdown"
                       align="end"
                     >
-                      <NavDropdown.Item href="#profilo">
-                        Profilo
+                      <NavDropdown.Item>
+                        <Link to="/profile">Profilo</Link>
                       </NavDropdown.Item>
-                      <NavDropdown.Item href="#impostazioni">
-                        Impostazioni
+                      <NavDropdown.Item>
+                        <Link>Impostazioni</Link>
                       </NavDropdown.Item>
                       <NavDropdown.Divider />
-                      <NavDropdown.Item href="#logout">Esci</NavDropdown.Item>
+
+                      <NavDropdown.Item>
+                        <Link>Esci</Link>
+                      </NavDropdown.Item>
                     </NavDropdown>
                   </div>
 
