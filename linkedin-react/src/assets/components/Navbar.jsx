@@ -4,6 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Container, Row, Col } from "react-bootstrap";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [showDown, setShowDown] = useState(false);
@@ -46,10 +47,10 @@ const NavBar = () => {
                 >
                   <div className="d-flex border-end">
                     <Nav.Link
-                      href="#lavoro"
+                      as={Link}
+                      to="/home"
                       className="d-flex flex-column align-items-center mx-3"
                     >
-                      {" "}
                       <i
                         className="bi bi-house-door-fill"
                         style={{ fontSize: "1.5rem" }}
@@ -113,7 +114,7 @@ const NavBar = () => {
                       id="nav-avatar-dropdown"
                       align="end"
                     >
-                      <NavDropdown.Item href="#profilo">
+                      <NavDropdown.Item as={Link} to="/profile">
                         Profilo
                       </NavDropdown.Item>
                       <NavDropdown.Item href="#impostazioni">

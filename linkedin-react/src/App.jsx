@@ -19,6 +19,7 @@ function App() {
         <MessageBox></MessageBox>
         <Routes>
           <Route path='/' element={<PostSection />} />
+          <Route path='/home' element={<HomePage />} />
           <Route path='/profile' element={<LinkedinProfileSection />} />
         </Routes>
         <Footer />
