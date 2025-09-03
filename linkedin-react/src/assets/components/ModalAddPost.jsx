@@ -3,6 +3,9 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import { ModalFooter } from "react-bootstrap";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 const ModalAddPost = ({ show, closeModal }) => {
   const profileData = useSelector((state) => state.profile.data);
@@ -60,39 +63,98 @@ const ModalAddPost = ({ show, closeModal }) => {
           </Modal.Header>
 
           <Modal.Body>
-            <Form onSubmit={addPost}>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label></Form.Label>
-                <Form.Control
-                  as="textarea"
-                  placeholder="Di cosa vorresti parlare?"
-                  autoFocus
-                  name="text"
-                  value={formValues.text}
-                  onChange={changeValues}
-                  required
-                />
-              </Form.Group>
-              <Button variant="secondary" onClick={closeModal}>
-                Chiudi
-              </Button>
-              <Button variant="primary" type="submit">
-                Pubblica
-              </Button>
-            </Form>
+            <Form.Control
+              as="textarea"
+              style={{ minHeight: "300px" }}
+              placeholder="Di cosa vorresti parlare?"
+              autoFocus
+              name="text"
+              value={formValues.text}
+              onChange={changeValues}
+              required
+            />
           </Modal.Body>
-          <div>
+          <div className="ms-2 mb-2 d-flex gap-3">
             <i className="bi bi-emoji-smile"></i>{" "}
           </div>
-          <div>
-            <i className="bi bi-image"></i>
-            <i className="bi bi-calendar3"></i>
-            <i className="bi bi-patch-check-fill"></i>
-            <i className="bi bi-plus-lg"></i>
+
+          <div className="ms-2 mb-2 d-flex gap-3">
+            <OverlayTrigger
+              placement="top"
+              overlay={
+                <Tooltip id="tooltip-image">
+                  Aggiungi un contenuto multimediale
+                </Tooltip>
+              }
+            >
+              <i
+                className="bi bi-image fs-4"
+                style={{ cursor: "pointer", color: "grey" }}
+              ></i>
+            </OverlayTrigger>
+
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip id="tooltip-image">Crea un evento </Tooltip>}
+            >
+              <i
+                className="bi bi-calendar3 fs-4"
+                style={{ cursor: "pointer", color: "grey" }}
+              ></i>
+            </OverlayTrigger>
+
+            <OverlayTrigger
+              placement="top"
+              overlay={
+                <Tooltip id="tooltip-image">
+                  Festeggia un'occasione speciale{" "}
+                </Tooltip>
+              }
+            >
+              <i
+                className="bi bi-patch-check-fill fs-4"
+                style={{ cursor: "pointer", color: "grey" }}
+              ></i>
+            </OverlayTrigger>
+
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip id="tooltip-image">Altro </Tooltip>}
+            >
+              <i
+                className="bi bi-plus-lg fs-4"
+                style={{ cursor: "pointer", color: "grey" }}
+              ></i>
+            </OverlayTrigger>
           </div>
+          <ModalFooter>
+            <div>
+              <OverlayTrigger
+                placement="top"
+                overlay={
+                  <Tooltip id="tooltip-image">
+                    Programma per un secondo momento{" "}
+                  </Tooltip>
+                }
+              >
+                <i className="bi bi-clock"></i>
+              </OverlayTrigger>
+            </div>
+            <Button
+              variant="secondary-subtle"
+              onClick={closeModal}
+              className="rounded-pill"
+            >
+              Chiudi
+            </Button>
+            <Button
+              variant="secondary-subtle"
+              type="submit"
+              className="rounded-pill"
+            >
+              Pubblica
+            </Button>
+          </ModalFooter>
         </Modal>
       )}
     </>

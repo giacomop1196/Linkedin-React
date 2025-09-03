@@ -15,6 +15,8 @@ import { setProfileData } from "../components/redux/profileSlice";
 import { useDispatch } from "react-redux";
 import LinearProgress from "@mui/material/LinearProgress";
 import ModalAddPost from "./ModalAddPost";
+import DeletePost from "./DeletePost";
+import ModalEditPost from "./ModalEditPost";
 
 const PostSection = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -95,14 +97,14 @@ const PostSection = () => {
       });
   };
 
-  // Modale Aggiungi Esperienza
+  // Modale Aggiungi Post
   const [showAddPostModal, setAddPostModal] = useState(false);
 
-  // Funzione per aprire il Modale Aggiungi Esperienza
+  // Funzione per aprire il Modale Aggiungi Post
   const openAddPostModal = () => {
     setAddPostModal(true);
   };
-  // Funzione per chiudere il Modale Aggiungi Esperienza
+  // Funzione per chiudere il Modale Aggiungi Post
   const closeAddPostModal = () => {
     setAddPostModal(false);
   };
@@ -114,6 +116,33 @@ const PostSection = () => {
     setUltimiPosts(ultimiTrentaElementi.reverse());
     console.log(ultimiTrentaElementi);
   }
+
+  // Modale Elimina Post
+  const [showDeletePostModal, setDeletePostModal] = useState(false);
+  const [selectedPostId, setSelectedPostId] = useState(null);
+
+  // Funzione per aprire il Modale Elimina Post
+  const openDeletePostModal = (postId) => {
+    setSelectedPostId(postId);
+    setDeletePostModal(true);
+  };
+  // Funzione per chiudere il Modale Elimina Post
+  const closeDeletePostModal = () => {
+    setDeletePostModal(false);
+  };
+
+   // Modale Modifica Post
+  const [showEditPostModal, setEditPostModal] = useState(false);
+
+  // Funzione per aprire il Modale Elimina Post
+  const openEditPostModal = (postId) => {
+    setSelectedPostId(postId);
+    setEditPostModal(true);
+  };
+  // Funzione per chiudere il Modale Elimina Post
+  const closeEditPostModal = () => {
+    setEditPostModal(false);
+  };
 
   return (
     <>
@@ -243,6 +272,9 @@ const PostSection = () => {
                               <i className="bi bi-three-dots text-muted"></i>
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
+                              <Dropdown.Item onClick={() => openEditPostModal(post._id)}>
+                                Modifica post
+                              </Dropdown.Item>
                               <Dropdown.Item href="#/action-1">
                                 Nascondi post
                               </Dropdown.Item>
@@ -255,6 +287,7 @@ const PostSection = () => {
                             type="button"
                             className="btn-close ms-2"
                             aria-label="Close"
+                            onClick={() => openDeletePostModal(post._id)}
                           ></button>
                         </div>
                       </div>
@@ -283,7 +316,9 @@ const PostSection = () => {
                 <p>Nessun post da mostrare.</p>
               )}
             </div>
-            <ModalAddPost show={showAddPostModal} closeModal={closeAddPostModal} />
+            <ModalAddPost show={showAddPostModal} closeModal={closeAddPostModal} refreshPost={getPosts}/>
+            <DeletePost show={showDeletePostModal} closeModal={closeDeletePostModal} postId={selectedPostId} refreshPost={getPosts}/>
+             <ModalEditPost show={showEditPostModal} closeModal={closeEditPostModal} postId={selectedPostId} refreshPost={getPosts} />
           </Col>
           <Col xs={12} md={10} lg={2}>
             <RightSidebar />
