@@ -1,26 +1,28 @@
-// Importazione dei file CSS necessari
 import './App.css'
-// Importazione di Bootstrap per lo styling
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
-// Importazione delle icone Bootstrap
 import 'bootstrap-icons/font/bootstrap-icons.min.css';
-// Importazione del componente RightSidebar
 import NavBar from './assets/components/Navbar';
 import LinkedinProfileSection from './assets/components/LinkedinProfileSection';
 import Footer from './assets/components/Footer';
 import MessageBox from './assets/components/MessageBox';
 import HomePage from './assets/components/HomePage';
+import PostSection from './assets/components/PostSection';
 
 
 // Componente principale dell'applicazione
 function App() {
   return (
     <>
-     <NavBar/>
-     <MessageBox></MessageBox>
-     <HomePage/>
-     <LinkedinProfileSection/>
-     <Footer/>
+      <BrowserRouter>
+        <NavBar />
+        <MessageBox></MessageBox>
+        <Routes>
+          <Route path='/' element={<PostSection />} />
+          <Route path='/profile' element={<LinkedinProfileSection />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </>
   );
 }
