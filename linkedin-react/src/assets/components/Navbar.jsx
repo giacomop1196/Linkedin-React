@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
 const NavBar = () => {
@@ -12,11 +12,22 @@ const NavBar = () => {
   const profileData = useSelector((state) => state.profile.data);
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [showDown, setShowDown] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const clikShowDown = () => {
     setShowDown(!showDown);
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/jobs?search=${encodeURIComponent(searchQuery.trim())}`);
+    } else {
+      navigate('/jobs');
+    }
   };
   return (
     <>
@@ -38,12 +49,15 @@ const NavBar = () => {
                   <Form
                     className="d-none d-md-flex mx-3 flex-grow-1 "
                     style={{ maxWidth: "300px" }}
+                    onSubmit={handleSearch}
                   >
                     <Form.Control
-                      type=" search"
-                      placeholder="🔍 Cerca"
+                      type="search"
+                      placeholder="🔍 Cerca lavori..."
                       className="me-2 rounded-pill"
                       aria-label="Search"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
                     />
                   </Form>
                   <Navbar.Toggle />

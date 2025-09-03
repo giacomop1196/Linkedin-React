@@ -1,5 +1,6 @@
 import { Container, Row, Col, Card, Button, Spinner, Alert, Badge, Form } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 const JobsSection = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -8,19 +9,39 @@ const JobsSection = () => {
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const apiLink = 'https://strive-benchmark.herokuapp.com/api/jobs';
 
   useEffect(() => {
-    getJobs();
-  }, []);
+    // Leggi i parametri di ricerca dall'URL
+    const searchQuery = searchParams.get('search');
+    const categoryQuery = searchParams.get('category');
+    const companyQuery = searchParams.get('company');
+    
+    if (searchQuery) setSearchTerm(searchQuery);
+    if (categoryQuery) setSelectedCategory(categoryQuery);
+    
+    getJobs(searchQuery, categoryQuery, companyQuery);
+  }, [searchParams]);
 
   useEffect(() => {
     filterJobs();
   }, [jobs, searchTerm, selectedCategory]);
 
-  const getJobs = () => {
-    fetch(apiLink, {
+  const getJobs = (search = '', category = '', company = '') => {
+    let url = apiLink;
+    const params = new URLSearchParams();
+    
+    if (search) params.append('search', search);
+    if (category) params.append('category', category);
+    if (company) params.append('company', company);
+    
+    if (params.toString()) {
+      url += '?' + params.toString();
+    }
+    
+    fetch(url, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -127,7 +148,17 @@ const JobsSection = () => {
                           type="text"
                           placeholder="Es. Sviluppatore, Marketing, Sales..."
                           value={searchTerm}
-                          onChange={(e) => setSearchTerm(e.target.value)}
+                          onChange={(e) => {
+                            setSearchTerm(e.target.value);
+                            // Aggiorna l'URL con il nuovo termine di ricerca
+                            const newParams = new URLSearchParams(searchParams);
+                            if (e.target.value) {
+                              newParams.set('search', e.target.value);
+                            } else {
+                              newParams.delete('search');
+                            }
+                            setSearchParams(newParams);
+                          }}
                         />
                       </Form.Group>
                     </Col>
@@ -136,7 +167,17 @@ const JobsSection = () => {
                         <Form.Label>Categoria</Form.Label>
                         <Form.Select
                           value={selectedCategory}
-                          onChange={(e) => setSelectedCategory(e.target.value)}
+                          onChange={(e) => {
+                            setSelectedCategory(e.target.value);
+                            // Aggiorna l'URL con la nuova categoria
+                            const newParams = new URLSearchParams(searchParams);
+                            if (e.target.value) {
+                              newParams.set('category', e.target.value);
+                            } else {
+                              newParams.delete('category');
+                            }
+                            setSearchParams(newParams);
+                          }}
                         >
                           <option value="">Tutte le categorie</option>
                           {getUniqueCategories().map((category) => (
