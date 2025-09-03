@@ -1,5 +1,5 @@
 import { Container, Row, Col, Card, Button, Image, Spinner, Alert } from 'react-bootstrap';
-import { useState, useEffect } from 'react'
+import { useState, useEffect} from 'react'
 import ProfileRightSidebar from './ProfileRightSidebar';
 import AddExperiences from './ModalAddExperiences';
 import ModalEditExperience from './ModalEditExperience';
@@ -108,6 +108,37 @@ const LinkedinProfileSection = () => {
             })
     }
 
+
+    // Funzione per gestire l'upload dell'immagine del profilo (versione senza async/await)
+    const handleProfileImageUpload = (e) => {
+        const file = e.target.files[0];
+        if (!file) {
+            return;
+        }
+
+        const formData = new FormData();
+
+        formData.append('profile', file);
+
+        fetch(`https://striveschool-api.herokuapp.com/api/profile/${results._id}/picture`, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Authorization': 'Bearer ' + apiKey,
+            },
+        })
+            .then(response => {
+                if (response.ok) {
+                    getResults(); // Aggiorna i dati del profilo per mostrare la nuova immagine
+                } else {
+                    console.error('Errore durante il caricamento dell\'immagine:', response.statusText);
+                }
+            })
+            .catch(error => {
+                console.error("Errore di rete:", error);
+            });
+    };
+
     return (
         <>
             {/* Spinner */}
@@ -149,15 +180,27 @@ const LinkedinProfileSection = () => {
                                 <Card.Body>
                                     {/* Immagine Profilo */}
                                     <div style={{ position: 'relative' }}>
-                                        <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp4yuU5Y7hjAdc-Mp8qTZZ4lhIWvkv-Dsz0Q&s"
-                                            roundedCircle
-                                            style={{
-                                                width: '150px',
-                                                height: '150px',
-                                                objectFit: 'cover',
-                                                border: '4px solid white',
-                                                marginTop: '-75px',
-                                            }} />
+                                        <label htmlFor="file-input">
+                                            <Image
+                                                src={results.image}
+                                                roundedCircle
+                                                style={{
+                                                    width: '150px',
+                                                    height: '150px',
+                                                    objectFit: 'cover',
+                                                    border: '4px solid white',
+                                                    marginTop: '-75px',
+                                                    cursor: 'pointer'
+                                                }}
+                                            />
+                                        </label>
+                                        {/* Input file nascosto */}
+                                        <input
+                                            id="file-input"
+                                            type="file"
+                                            style={{ display: 'none' }}
+                                            onChange={handleProfileImageUpload}
+                                        />
                                     </div>
                                     <Row className="mt-3">
                                         <Col>
@@ -282,7 +325,7 @@ const LinkedinProfileSection = () => {
                                                     <p className="text-muted mb-0">{exp.company} · {exp.area}</p>
                                                     <p className="text-muted mb-0">Da: {exp.startDate.split("T")[0]} - A: {exp.endDate.split("T")[0] || 'Presente'}</p>
                                                     <p className="mb-2">{exp.description}</p>
-                                                </div>                
+                                                </div>
                                             </div>
                                         ))
                                     ) : (
@@ -357,7 +400,7 @@ const LinkedinProfileSection = () => {
                         </Col>
                         {/* Modale Aggiungi Esperienza */}
                         <AddExperiences getExperencies={getExperencies} show={showExperenciesModal} closeModal={closeExperenciesModal} userId={results._id} />
-                         <ModalEditExperience getExperencies={getExperencies} showEdit={showEditExperencieModal} closeEditModal={closeEditExperencieModal} userId={results._id} experienceId={selectedExperienceId} />
+                        <ModalEditExperience getExperencies={getExperencies} showEdit={showEditExperencieModal} closeEditModal={closeEditExperencieModal} userId={results._id} experienceId={selectedExperienceId} />
                     </Row>
                 </Container>
             )}
