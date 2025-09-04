@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const NavBar = () => {
@@ -17,6 +17,18 @@ const NavBar = () => {
   const clikShowDown = () => {
     setShowDown(!showDown);
   };
+
+  const navigate = useNavigate();
+
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery) {
+      navigate(`/jobs?search=${searchQuery}`);
+    }
+  };
+
   return (
     <>
       {profileData && (
@@ -34,11 +46,13 @@ const NavBar = () => {
                       style={{ fontSize: "1.8rem", color: "#0A66C2" }}
                     ></i>
                   </Navbar.Brand>
-                  <Form
+                  <Form onSubmit={handleSearch}
                     className="d-none d-md-flex mx-3 flex-grow-1 "
                     style={{ maxWidth: "300px" }}
                   >
                     <Form.Control
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
                       type=" search"
                       placeholder="🔍 Cerca"
                       className="me-2 rounded-pill"
@@ -58,16 +72,16 @@ const NavBar = () => {
                           <i
                             className={
                               location.pathname === "/"
-                                ? "blue-link bi bi-house-door-fill"
-                                : "bi bi-house-door-fill"
+                                ? "bi bi-house-door-fill text-black"
+                                : "bi bi-house-door-fill text-muted"
                             }
                             style={{ fontSize: "1.5rem" }}
                           ></i>
                           <Link
                             className={
                               location.pathname === "/"
-                                ? "blue-link"
-                                : "text-black"
+                                ? "text-black"
+                                : "text-muted"
                             }
                             to="/"
                           >
@@ -86,7 +100,7 @@ const NavBar = () => {
                         </div>
                         <div className="d-flex flex-column align-items-center mx-4 mt-2">
                           <i
-                          className={
+                            className={
                               location.pathname === "/jobs"
                                 ? "blue-link bi bi-briefcase-fill"
                                 : "bi bi-briefcase-fill"
