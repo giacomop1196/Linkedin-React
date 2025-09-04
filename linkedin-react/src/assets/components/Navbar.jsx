@@ -20,10 +20,10 @@ const NavBar = () => {
   return (
     <>
       {profileData && (
-        <Container fluid className="bg-withe border-bottom ">
+        <Container fluid className="bg-white border-bottom sticky-top">
           <Row className="justify-content-center p-0">
             <Col xs={12} md={10} lg={8} className="p-0">
-              <Navbar expand="lg" className="bg-body-light h6">
+              <Navbar expand="lg" className="bg-white h6">
                 <Container
                   fluid
                   className="d-flex justify-content-center align-items-center"
@@ -86,14 +86,21 @@ const NavBar = () => {
                         </div>
                         <div className="d-flex flex-column align-items-center mx-4 mt-2">
                           <i
-                          className={
+                            className={
                               location.pathname === "/jobs"
                                 ? "blue-link bi bi-briefcase-fill"
                                 : "bi bi-briefcase-fill"
                             }
                             style={{ fontSize: "1.5rem" }}
                           ></i>
-                          <Link className={location.pathname === "/jobs" ? "blue-link" : "text-black"} to="/jobs" >
+                          <Link
+                            className={
+                              location.pathname === "/jobs"
+                                ? "blue-link"
+                                : "text-black"
+                            }
+                            to="/jobs"
+                          >
                             <span style={{ fontSize: "0.75rem" }}>Lavoro</span>
                           </Link>
                         </div>
