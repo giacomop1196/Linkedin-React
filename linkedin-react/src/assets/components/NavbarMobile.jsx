@@ -17,7 +17,7 @@ const MobileNavBar = () => {
       {profileData && (
         <Container
           fluid
-          className="bg-withe  z-1 bg-white sticky-navbar d-md-none d-lg-none"
+          className="z-1 bg-white sticky-navbar d-md-none d-lg-none"
         >
           <Row className="justify-content-center p-0">
             <Col xs={12} md={10} lg={8} className="p-0">

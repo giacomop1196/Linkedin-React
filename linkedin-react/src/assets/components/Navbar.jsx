@@ -6,6 +6,7 @@ import { Container, Row, Col, Image } from "react-bootstrap";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import InputSearchMobile from "./inputSearchMobile";
 
 const NavBar = () => {
   const profileData = useSelector((state) => state.profile.data);
@@ -35,6 +36,10 @@ const NavBar = () => {
         <Container fluid className="bg-white border-bottom">
           <Row className="justify-content-center">
             <Col md={10} lg={8} className="my-0">
+              <InputSearchMobile
+                handleSearch={handleSearch}
+                searchQuery={searchQuery}
+              />
               <Navbar expand="lg" className="bg-white py-0 d-none d-md-block">
                 <Container
                   fluid
