@@ -82,21 +82,21 @@ const RightSidebar = () => {
       {/* Footer Links */}
       <div className="text-center">
         <div className="d-flex flex-wrap justify-content-center mb-1">
-          <Button variant="link" className="p-0 text-muted small">Informazioni</Button>
-          <Button variant="link" className="p-0 text-muted small">Accessibilità</Button>
-          <Button variant="link" className="p-0 text-muted small">Centro assistenza</Button>
+          <Button variant="link" className="p-0 text-muted small text-decoration-none mx-2">Informazioni</Button>
+          <Button variant="link" className="p-0 text-muted small text-decoration-none mx-2">Accessibilità</Button>
+          <Button variant="link" className="p-0 text-muted small text-decoration-none mx-2">Centro assistenza</Button>
         </div>
         <div className="d-flex flex-wrap justify-content-center mb-1">
-          <Button variant="link" className="p-0 text-muted small">Privacy e condizioni</Button>
-          <Button variant="link" className="p-0 text-muted small">Opzioni per gli annunci pubblicitari</Button>
+          <Button variant="link" className="p-0 text-muted small text-decoration-none mx-2">Privacy e condizioni</Button>
+          <Button variant="link" className="p-0 text-muted small text-decoration-none mx-2">Opzioni per gli annunci pubblicitari</Button>
         </div>
         <div className="d-flex flex-wrap justify-content-center mb-1">
-          <Button variant="link" className="p-0 text-muted small">Pubblicità</Button>
-          <Button variant="link" className="p-0 text-muted small">Servizi alle aziende</Button>
+          <Button variant="link" className="p-0 text-muted small text-decoration-none mx-2">Pubblicità</Button>
+          <Button variant="link" className="p-0 text-muted small text-decoration-none mx-2">Servizi alle aziende</Button>
         </div>
         <div className="d-flex flex-wrap justify-content-center mb-1">
-          <Button variant="link" className="p-0 text-muted small">Scarica l'app LinkedIn</Button>
-          <Button variant="link" className="p-0 text-muted small">Altro</Button>
+          <Button variant="link" className="p-0 text-muted small text-decoration-none mx-2">Scarica l'app LinkedIn</Button>
+          <Button variant="link" className="p-0 text-muted small text-decoration-none mx-2">Altro</Button>
         </div>
         <p className="small text-muted mb-0">
           LinkedIn LinkedIn Corporation © 2025
