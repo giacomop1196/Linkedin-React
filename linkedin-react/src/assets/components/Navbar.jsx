@@ -80,10 +80,14 @@ const NavBar = () => {
                         </div>
                         <div className="d-flex flex-column align-items-center mx-3">
                           <i
-                            className="bi bi-briefcase-fill"
+                          className={
+                              location.pathname === "/jobs"
+                                ? "blue-link bi bi-briefcase-fill"
+                                : "bi bi-briefcase-fill"
+                            }
                             style={{ fontSize: "1.5rem" }}
                           ></i>
-                          <Link className="text-black">
+                          <Link className={location.pathname === "/jobs" ? "blue-link" : "text-black"} to="/jobs" >
                             <span style={{ fontSize: "0.75rem" }}>Lavoro</span>
                           </Link>
                         </div>

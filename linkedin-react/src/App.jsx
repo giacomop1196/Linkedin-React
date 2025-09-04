@@ -7,6 +7,7 @@ import LinkedinProfileSection from './assets/components/LinkedinProfileSection';
 import Footer from './assets/components/Footer';
 import MessageBox from './assets/components/MessageBox';
 import PostSection from './assets/components/PostSection';
+import Job from './assets/components/Job';
 
 
 // Componente principale dell'applicazione
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path='/' element={<PostSection />} />
           <Route path='/profile' element={<LinkedinProfileSection />} />
+          <Route path='/jobs' element={<Job />} />
         </Routes>
         <Footer />
       </BrowserRouter>
