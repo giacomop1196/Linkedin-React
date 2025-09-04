@@ -1,4 +1,13 @@
-import { Container, Row, Col, Image, NavDropdown, Navbar, Nav, Form } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Image,
+  NavDropdown,
+  Navbar,
+  Nav,
+  Form,
+} from "react-bootstrap";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -154,24 +163,32 @@ const NavBar = () => {
                         {/* Profilo */}
                         <div className="d-flex flex-column align-items-center px-3 border-end">
                           <div>
-                            <Image
-                              src={profileData.image}
-                              alt="avatar"
-                              className="rounded-circle d-flex flex-column align-items-center mb-0 p-0"
-                              style={{
-                                width: "25px",
-                                height: "25px",
-                                objectFit: "cover",
-                              }}
-                            />
+                            <div>
+                              <Image
+                                src={profileData.image}
+                                alt="avatar"
+                                className="rounded-circle mt-auto"
+                                style={{
+                                  width: "25px",
+                                  height: "25px",
+                                  objectFit: "cover",
+                                }}
+                              />
+                            </div>
                             <div className="d-flex align-items-center">
                               <span
-                                className="text-muted"
-                                style={{ fontSize: "0.75rem" }}
+                                className="text-muted mt-2 me-1"
+                                style={{
+                                  fontSize: "0.75rem",
+                                }}
                               >
                                 Tu
                               </span>
-                              <NavDropdown id="nav-avatar-dropdown" align="end">
+                              <NavDropdown
+                                id="nav-avatar-dropdown"
+                                align="end"
+                                className="mt-1"
+                              >
                                 <NavDropdown.Item>
                                   <Link to="/profile">Profilo</Link>
                                 </NavDropdown.Item>
@@ -208,17 +225,25 @@ const NavBar = () => {
                           <div className="text-center">
                             <div
                               style={{ color: "brown" }}
-                              className="border-bottom d-flex align-content-center ms-4 mb-1 pointer"
+                              className=" text-decoration-underline d-flex align-content-center  mb-1 pointer"
                             >
-                              <span style={{ fontSize: "0.75rem" }}>
+                              <span
+                                className="ms-4"
+                                style={{ fontSize: "0.75rem" }}
+                              >
                                 Prova Premium per 0
                               </span>
                             </div>
                             <div
                               style={{ color: "brown" }}
-                              className="border-bottom d-flex  ms-lg-5 mx-lg-5 mb-auto justify-content-center "
+                              className="text-decoration-underline d-flex  ms-lg-5 mx-lg-5 mb-auto justify-content-center "
                             >
-                              <span style={{ fontSize: "0.75rem" }}>EUR</span>
+                              <span
+                                className="ms-3"
+                                style={{ fontSize: "0.75rem" }}
+                              >
+                                EUR
+                              </span>
                             </div>
                           </div>
                         </div>
