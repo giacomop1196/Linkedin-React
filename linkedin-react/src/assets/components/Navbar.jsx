@@ -5,9 +5,10 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 
 const NavBar = () => {
+
   const profileData = useSelector((state) => state.profile.data);
 
   const location = useLocation();
@@ -19,10 +20,10 @@ const NavBar = () => {
   };
   return (
     <>
-      {profileData && (
-        <Container fluid className="bg-withe border-bottom navbar-sticky">
+      {profileData &&
+        <Container fluid className="bg-withe border-bottom ">
           <Row className="justify-content-center p-0">
-            <Col xs={12} md={10} lg={8} className="p-0 ">
+            <Col xs={12} md={10} lg={8} className="p-0">
               <Navbar expand="lg" className="bg-body-light h6">
                 <Container
                   fluid
@@ -46,144 +47,127 @@ const NavBar = () => {
                     />
                   </Form>
                   <Navbar.Toggle />
+                  <Navbar.Collapse id="navbarScroll">
+                    <Nav
+                      className="mx-auto my-2 my-lg-0 justify-content-center"
+                      style={{ maxHeight: "100px" }}
+                      navbarScroll
+                    >
+                      <div className="d-flex border-end">
+                        <div className="d-flex flex-column align-items-center mx-3">
+                          {" "}
+                          <i
+                            className={
+                              location.pathname === "/"
+                                ? "blue-link bi bi-house-door-fill"
+                                : "bi bi-house-door-fill"
+                            }
+                            style={{ fontSize: "1.5rem" }}
+                          ></i>
+                          <Link className={location.pathname === "/" ? "blue-link" : "text-black"} to="/">
+                            <span style={{ fontSize: "0.75rem" }}>Home</span>
+                          </Link>
+                        </div>
+                        <div className="d-flex flex-column align-items-center mx-3">
+                          {" "}
+                          <i
+                            className="bi bi-people-fill"
+                            style={{ fontSize: "1.5rem" }}
+                          ></i>
+                          <Link className="text-black">
+                            <span style={{ fontSize: "0.75rem" }}>Rete</span>
+                          </Link>
+                        </div>
+                        <div className="d-flex flex-column align-items-center mx-3">
+                          <i
+                            className="bi bi-briefcase-fill"
+                            style={{ fontSize: "1.5rem" }}
+                          ></i>
+                          <Link className="text-black">
+                            <span style={{ fontSize: "0.75rem" }}>Lavoro</span>
+                          </Link>
+                        </div>
+                        <div className="d-flex flex-column align-items-center mx-3">
+                          <i
+                            className="bi bi-chat-dots-fill"
+                            style={{ fontSize: "1.5rem" }}
+                          ></i>
+                          <Link className="text-black">
+                            <span style={{ fontSize: "0.75rem" }}>Messaggistica</span>
+                          </Link>
+                        </div>
+                        <div className="d-flex flex-column align-items-center mx-3">
+                          <i
+                            className="bi bi-bell-fill"
+                            style={{ fontSize: "1.5rem" }}
+                          ></i>
+                          <Link className="text-black">
+                            <span style={{ fontSize: "0.75rem" }}>Notifiche</span>
+                          </Link>
+                        </div>
 
-                  <Nav
-                    className="mx-auto my-2 my-lg-0 justify-content-center"
-                    style={{ maxHeight: "100px" }}
-                    navbarScroll
-                  >
-                    <div className="d-flex border-end">
-                      <div className="d-flex flex-column align-items-center mx-4 mt-2 ">
-                        {" "}
-                        <i
-                          className={
-                            location.pathname === "/"
-                              ? "blue-link bi bi-house-door-fill"
-                              : "bi bi-house-door-fill"
-                          }
-                          style={{ fontSize: "1.5rem" }}
-                        ></i>
-                        <Link
-                          className={
-                            location.pathname === "/"
-                              ? "blue-link"
-                              : "text-black"
-                          }
-                          to="/"
+                        <NavDropdown
+                          title={
+
+                            <Image
+                              src={profileData.image}
+                              alt="avatar"
+                              className="rounded-circle d-flex flex-column align-items-center"
+                              style={{
+                                width: "25px",
+                                height: "25px",
+                                objectFit: "cover",
+                              }}
+                            />}
+
+                          id="nav-avatar-dropdown"
+                          align="end"
                         >
-                          <span style={{ fontSize: "0.75rem" }}>Home</span>
-                        </Link>
+
+                          <NavDropdown.Item>
+                            <Link to="/profile">Profilo</Link>
+                          </NavDropdown.Item>
+                          <NavDropdown.Item>
+                            <Link>Impostazioni</Link>
+                          </NavDropdown.Item>
+                          <NavDropdown.Divider />
+
+                          <NavDropdown.Item>
+                            <Link>Esci</Link>
+                          </NavDropdown.Item>
+                        </NavDropdown>
                       </div>
-                      <div className="d-flex flex-column align-items-center mx-4 mt-2 ">
-                        {" "}
-                        <i
-                          className="bi bi-people-fill"
-                          style={{ fontSize: "1.5rem" }}
-                        ></i>
-                        <Link className="text-black">
-                          <span style={{ fontSize: "0.75rem" }}>Rete</span>
-                        </Link>
-                      </div>
-                      <div className="d-flex flex-column align-items-center mx-4 mt-2 ">
-                        <i
-                          className={
-                            location.pathname === "/jobs"
-                              ? "blue-link bi bi-briefcase-fill"
-                              : "bi bi-briefcase-fill"
-                          }
-                          style={{ fontSize: "1.5rem" }}
-                        ></i>
-                        <Link
-                          className={
-                            location.pathname === "/jobs"
-                              ? "blue-link"
-                              : "text-black"
-                          }
-                          to="/jobs"
+
+                      <div className="d-flex align-items-start position-relative">
+                        <div
+                          className="d-flex flex-column align-items-center mx-2 text-center"
+                          onClick={clikShowDown}
                         >
-                          <span style={{ fontSize: "0.75rem" }}>Lavoro</span>
-                        </Link>
-                      </div>
-                      <div className="d-flex flex-column align-items-center mx-4 mt-2">
-                        <i
-                          className="bi bi-chat-dots-fill"
-                          style={{ fontSize: "1.5rem" }}
-                        ></i>
-                        <Link className="text-black">
-                          <span style={{ fontSize: "0.75rem" }}>
-                            Messaggistica
+                          <i
+                            className="bi bi-layout-text-window bi bi-compass-fill d-flex mx-2 fs-4 my-2"
+                            style={{ fontSize: "1.5rem" }}
+                          ></i>
+                          <span style={{ fontSize: "0.80rem" }}>
+                            Per le aziende
                           </span>
-                        </Link>
-                      </div>
-                      <div className="d-flex flex-column align-items-center mx-4 mt-2 ">
-                        <i
-                          className="bi bi-bell-fill"
-                          style={{ fontSize: "1.5rem" }}
-                        ></i>
-                        <Link className="text-black">
-                          <span style={{ fontSize: "0.75rem" }}>Notifiche</span>
-                        </Link>
-                      </div>
-
-                      <NavDropdown
-                        title={
-                          <Image
-                            src={profileData.image}
-                            alt="avatar"
-                            className="rounded-circle d-flex flex-column align-items-center d-flex flex-column align-items-center  mt-2"
-                            style={{
-                              width: "25px",
-                              height: "25px",
-                              objectFit: "cover",
-                            }}
-                          />
-                        }
-                        id="nav-avatar-dropdown"
-                        align="end"
-                      >
-                        <NavDropdown.Item>
-                          <Link to="/profile">Profilo</Link>
-                        </NavDropdown.Item>
-                        <NavDropdown.Item>
-                          <Link>Impostazioni</Link>
-                        </NavDropdown.Item>
-                        <NavDropdown.Divider />
-
-                        <NavDropdown.Item>
-                          <Link>Esci</Link>
-                        </NavDropdown.Item>
-                      </NavDropdown>
-                    </div>
-
-                    <div className="d-flex align-items-start position-relative ">
-                      <div
-                        className="d-flex flex-column align-items-center mx-2 text-center"
-                        onClick={clikShowDown}
-                      >
-                        <i
-                          className="bi bi-layout-text-window bi bi-compass-fill d-flex mx-2 fs-4 my-2"
-                          style={{ fontSize: "1.5rem" }}
-                        ></i>
-                        <span style={{ fontSize: "0.80rem" }}>
-                          Per le aziende
-                        </span>
-                      </div>
-                      <div>
-                        <div
-                          style={{ color: "brown" }}
-                          className="border-bottom d-flex align-content-center ms-4 mb-1"
-                        >
-                          <h6>Prova Premium per 0</h6>
                         </div>
-                        <div
-                          style={{ color: "brown" }}
-                          className="border-bottom d-flex  ms-lg-5 mx-lg-5 mb-auto  justify-content-center "
-                        >
-                          <h6> EUR</h6>
+                        <div>
+                          <div
+                            style={{ color: "brown" }}
+                            className="border-bottom d-flex align-content-center ms-4 mb-1"
+                          >
+                            <h6>Prova Premium per 0</h6>
+                          </div>
+                          <div
+                            style={{ color: "brown" }}
+                            className="border-bottom d-flex  ms-lg-5 mx-lg-5 mb-auto  justify-content-center "
+                          >
+                            <h6> EUR</h6>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Nav>
+                    </Nav>
+                  </Navbar.Collapse>
                 </Container>
               </Navbar>
               {showDown ? (
@@ -208,9 +192,7 @@ const NavBar = () => {
                             className="blue-link bi bi-compass-fill d-flex mx-2 fs-3 mb-2"
                             href="compass"
                           ></i>
-                          <h5 className="d-flex align-self-center">
-                            Trova Lead
-                          </h5>
+                          <h5 className="d-flex align-self-center">Trova Lead</h5>
                         </div>
                       </div>
                       <div>
@@ -275,9 +257,7 @@ const NavBar = () => {
                       </div>
                       <div>
                         <p className="fs-5">Vendi con Linkedin</p>
-                        <p className="fs-6">
-                          Sblocca nuove opportunità di vendita
-                        </p>
+                        <p className="fs-6">Sblocca nuove opportunità di vendita</p>
                       </div>
                       <div>
                         <p className="fs-5">offerta di lavoro gratuita</p>
@@ -297,9 +277,7 @@ const NavBar = () => {
                       </div>
                       <div>
                         <p className="fs-5">Impara conLinkedin</p>
-                        <p className="fs-6">
-                          Corsi per formare i tuoi dipendenti
-                        </p>
+                        <p className="fs-6">Corsi per formare i tuoi dipendenti</p>
                       </div>
                       <div>
                         <p className="fs-5">Centro per amministratori</p>
@@ -317,7 +295,7 @@ const NavBar = () => {
             </Col>
           </Row>
         </Container>
-      )}
+      }
     </>
   );
 };
