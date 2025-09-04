@@ -5,3 +5,7 @@
 .pointer {
   cursor: pointer;
 }
+
+.navbar-nav .dropdown-toggle {
+  padding: 0 !important;
+}
