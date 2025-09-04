@@ -1,5 +1,6 @@
 import { Card, Button, Image } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+import "../css/MediaQueries.css"
 
 const MessageBox = () => {
 
@@ -12,11 +13,12 @@ const MessageBox = () => {
       right: '10px',
       width: '300px',
       zIndex: '1000'
-    }}>
+    }}
+    className='message-box'>
       {profileData && 
       <Card className='rounded-bottom-0'>
-        <Card.Header className="d-flex justify-content-between align-items-center">
-          <div className="d-flex align-items-center">
+        <Card.Header className="d-flex justify-content-between align-items-center ">
+          <div className="d-flex align-items-center ">
             <Image
               src={profileData.image}
               alt="Avatar" 

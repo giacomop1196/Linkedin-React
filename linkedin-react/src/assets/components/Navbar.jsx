@@ -20,7 +20,7 @@ const NavBar = () => {
   return (
     <>
       {profileData && (
-        <Container fluid className="bg-white border-bottom sticky-top">
+        <Container fluid className="bg-withe border-bottom ">
           <Row className="justify-content-center p-0">
             <Col xs={12} md={10} lg={8} className="p-0">
               <Navbar expand="lg" className="bg-white h6">
@@ -53,7 +53,7 @@ const NavBar = () => {
                       navbarScroll
                     >
                       <div className="d-flex border-end">
-                        <div className="d-flex flex-column align-items-center mx-4 mt-2">
+                        <div className="d-flex flex-column align-items-center mx-3">
                           {" "}
                           <i
                             className={
@@ -74,7 +74,7 @@ const NavBar = () => {
                             <span style={{ fontSize: "0.75rem" }}>Home</span>
                           </Link>
                         </div>
-                        <div className="d-flex flex-column align-items-center mx-4 mt-2">
+                        <div className="d-flex flex-column align-items-center mx-3">
                           {" "}
                           <i
                             className="bi bi-people-fill"
@@ -84,27 +84,16 @@ const NavBar = () => {
                             <span style={{ fontSize: "0.75rem" }}>Rete</span>
                           </Link>
                         </div>
-                        <div className="d-flex flex-column align-items-center mx-4 mt-2">
+                        <div className="d-flex flex-column align-items-center mx-3">
                           <i
-                            className={
-                              location.pathname === "/jobs"
-                                ? "blue-link bi bi-briefcase-fill"
-                                : "bi bi-briefcase-fill"
-                            }
+                            className="bi bi-briefcase-fill"
                             style={{ fontSize: "1.5rem" }}
                           ></i>
-                          <Link
-                            className={
-                              location.pathname === "/jobs"
-                                ? "blue-link"
-                                : "text-black"
-                            }
-                            to="/jobs"
-                          >
+                          <Link className="text-black">
                             <span style={{ fontSize: "0.75rem" }}>Lavoro</span>
                           </Link>
                         </div>
-                        <div className="d-flex flex-column align-items-center mx-4 mt-2">
+                        <div className="d-flex flex-column align-items-center mx-3">
                           <i
                             className="bi bi-chat-dots-fill"
                             style={{ fontSize: "1.5rem" }}
@@ -115,7 +104,7 @@ const NavBar = () => {
                             </span>
                           </Link>
                         </div>
-                        <div className="d-flex flex-column align-items-center mx-4 mt-2">
+                        <div className="d-flex flex-column align-items-center mx-3">
                           <i
                             className="bi bi-bell-fill"
                             style={{ fontSize: "1.5rem" }}
@@ -132,7 +121,7 @@ const NavBar = () => {
                             <Image
                               src={profileData.image}
                               alt="avatar"
-                              className="rounded-circle d-flex flex-column align-items-center d-flex flex-column align-items-center  mt-2"
+                              className="rounded-circle d-flex flex-column align-items-center"
                               style={{
                                 width: "25px",
                                 height: "25px",
