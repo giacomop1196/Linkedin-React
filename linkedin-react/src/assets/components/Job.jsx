@@ -14,6 +14,12 @@ const Job = () => {
 
     const [jobs, setJobs] = useState(null);
 
+    const [expandedJobId, setExpandedJobId] = useState(null);
+
+    const handleCardClick = (jobId) => {
+        setExpandedJobId(expandedJobId === jobId ? null : jobId);
+    };
+
     useEffect(() => {
         getJobs();
     }, []);
@@ -90,7 +96,7 @@ const Job = () => {
                             {/* Offerta di lavoro */}
                             {jobs ? (
                                 jobs.data.map((job) => (
-                                    <Card className="my-3 border-0 border-bottom rounded-0" key={job._id}>
+                                    <Card className="my-3 border-0 border-bottom rounded-0 pointer" key={job._id} onClick={() => handleCardClick(job._id)}>
                                         <Card.Body>
                                             <Row className="align-items-center">
                                                 <Col xs="auto" className="d-flex align-items-center">
@@ -117,6 +123,11 @@ const Job = () => {
                                                 <span className="text-primary small ms-2">Candidatura semplice</span>
                                             </div>
                                         </Card.Body>
+                                        {/* Descrizione annuncio */}
+                                        {expandedJobId === job._id && (
+                                            <div dangerouslySetInnerHTML={{ __html: job.description }} />
+                                        )}
+
                                     </Card>
                                 ))
                             ) : (
