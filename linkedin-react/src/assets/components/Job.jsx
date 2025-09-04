@@ -111,8 +111,8 @@ const Job = () => {
                                         <Card.Body>
                                             <Row className="align-items-center">
                                                 <Col xs="auto" className="d-flex align-items-center">
-                                                    <div className="rounded-circle bg-light d-flex justify-content-center align-items-center" style={{ width: '50px', height: '50px' }}>
-                                                        <Image />
+                                                    <div className="bg-light d-flex justify-content-center align-items-center" >
+                                                        <Image src="./img/job.jpg" className="rounded-circle object-fit-cover" style={{ width: '50px', height: '50px' }}/>
                                                     </div>
                                                 </Col>
                                                 <Col>

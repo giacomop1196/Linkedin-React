@@ -1,7 +1,4 @@
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col, Navbar, Nav } from "react-bootstrap";
 import "../css/MediaQueries.css";
 
 import { Link, useLocation } from "react-router-dom";
@@ -17,7 +14,7 @@ const MobileNavBar = () => {
       {profileData && (
         <Container
           fluid
-          className="bg-withe  z-1 bg-white sticky-navbar d-md-none d-lg-none"
+          className="bg-withe  z-1 bg-white sticky-navbar d-md-none d-lg-none border-top "
         >
           <Row className="justify-content-center p-0">
             <Col xs={12} md={10} lg={8} className="p-0">
