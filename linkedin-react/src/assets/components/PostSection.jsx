@@ -1,13 +1,4 @@
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Dropdown,
-  Alert,
-  Spinner,
-  Image,
-} from "react-bootstrap";
+import { Container, Row, Col, Card, Dropdown, Alert, Image } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import LeftSidebar from "./LeftSidebar";
 import RightSidebar from "./RightSidebar";
@@ -131,7 +122,7 @@ const PostSection = () => {
     setDeletePostModal(false);
   };
 
-   // Modale Modifica Post
+  // Modale Modifica Post
   const [showEditPostModal, setEditPostModal] = useState(false);
 
   // Funzione per aprire il Modale Elimina Post
@@ -316,9 +307,9 @@ const PostSection = () => {
                 <p>Nessun post da mostrare.</p>
               )}
             </div>
-            <ModalAddPost show={showAddPostModal} closeModal={closeAddPostModal} refreshPost={getPosts}/>
-            <DeletePost show={showDeletePostModal} closeModal={closeDeletePostModal} postId={selectedPostId} refreshPost={getPosts}/>
-             <ModalEditPost show={showEditPostModal} closeModal={closeEditPostModal} postId={selectedPostId} refreshPost={getPosts} />
+            <ModalAddPost show={showAddPostModal} closeModal={closeAddPostModal} refreshPost={getPosts} />
+            <DeletePost show={showDeletePostModal} closeModal={closeDeletePostModal} postId={selectedPostId} refreshPost={getPosts} />
+            <ModalEditPost show={showEditPostModal} closeModal={closeEditPostModal} postId={selectedPostId} refreshPost={getPosts} />
           </Col>
           <Col xs={12} md={10} lg={2}>
             <RightSidebar />
