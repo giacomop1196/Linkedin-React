@@ -60,8 +60,7 @@ const NavBar = () => {
                   </Form>
                   <Navbar.Toggle />
                   <Navbar.Collapse id="navbarScroll">
-                    <Nav className="mx-auto d-flex align-items-center"
-                      style={{ maxHeight: "60px" }} navbarScroll>
+                    <Nav className="mx-auto d-flex align-items-center">
                       <div className="d-flex align-items-center pe-2">
                         {/* Pulsante Home */}
                         <div className={location.pathname === "/"
@@ -132,15 +131,15 @@ const NavBar = () => {
                         </div>
 
                         {/* Profilo */}
-                        <div className="d-flex flex-column align-items-center px-3 py-0 border-end">
+                        <div className="d-flex flex-column align-items-center px-3 border-end">
                           <div>
                             <Image
                               src={profileData.image}
                               alt="avatar"
                               className="rounded-circle d-flex flex-column align-items-center mb-0 p-0"
                               style={{
-                                width: "30px",
-                                height: "30px",
+                                width: "25px",
+                                height: "25px",
                                 objectFit: "cover",
                               }}
                             />
