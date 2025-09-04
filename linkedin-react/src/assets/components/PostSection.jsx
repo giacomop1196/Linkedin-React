@@ -163,7 +163,7 @@ const PostSection = () => {
         </Container>
       )}
       {/* Container Principale */}
-      <Container fluid className="bg-light d-flex px-5 justify-content-center">
+      <Container fluid className="bg-light d-flex p-2 p-sm-5 justify-content-center">
         <Row className="justify-content-center">
           <Col xs={12} md={10} lg={2}>
             <LeftSidebar />

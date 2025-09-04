@@ -1,19 +1,20 @@
-import { Container, Row, Col, Card, Button, Image } from "react-bootstrap";
+import { Container, Row, Col, Card, Button, Image, Alert } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import LinearProgress from "@mui/material/LinearProgress";
 import LeftSidebarJob from "./LeftSidebarJob";
 
 const Job = () => {
 
-    const apiKey = import.meta.env.VITE_API_KEY;
+    const location = useLocation(); // Legge il parametro di ricerca dall'URL
+    const params = new URLSearchParams(location.search);
+    const searchQuery = params.get("search");
 
-    const apiLinkJob = `https://strive-benchmark.herokuapp.com/api/jobs?category=writing&limit=10`;
+    const apiKey = import.meta.env.VITE_API_KEY;
 
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
-
     const [jobs, setJobs] = useState(null);
-
     const [expandedJobId, setExpandedJobId] = useState(null);
 
     const handleCardClick = (jobId) => {
@@ -21,38 +22,44 @@ const Job = () => {
     };
 
     useEffect(() => {
+        const getJobs = () => {
+            setIsLoading(true);
+            setIsError(false);
+            // se c'è la query il link api è diverso
+            const apiLink = searchQuery
+                ? `https://strive-benchmark.herokuapp.com/api/jobs?search=${searchQuery}&limit=10`
+                : "https://strive-benchmark.herokuapp.com/api/jobs?category=writing&limit=10";
+
+            fetch(apiLink, {
+                method: "GET",
+                headers: {
+                    Authorization: "Bearer " + apiKey,
+                    "Content-Type": "application/json",
+                },
+            })
+                .then((res) => {
+                    if (res.ok) {
+                        return res.json();
+                    }
+                    throw new Error("Errore nel recupero dei dati");
+                })
+                .then((job) => {
+                    console.log(job, "dati lavori arrivati");
+                    setJobs(job);
+                })
+                .catch((error) => {
+                    console.error("Errore nel recupero dei dati:", error);
+                    setIsError(true);
+                })
+                .finally(() => {
+                    setIsLoading(false);
+                });
+        };
+        // Chiama la funzione ogni volta che la query di ricerca cambia
         getJobs();
-    }, []);
+    }, [searchQuery, apiKey, location.search]);
 
-    const getJobs = () => {
-        fetch(apiLinkJob, {
-            method: "GET",
-            headers: {
-                Authorization: "Bearer " + apiKey,
-                "Content-Type": "application/json",
-            },
-        })
-            .then((res) => {
-                if (res.ok) {
-                    return res.json();
-                }
-                throw new Error("Errore nel recupero dei dati");
-            })
-            .then((job) => {
-                console.log(job, "dati lavori arrivati");
-                setJobs(job);
-                setIsLoading(false);
-            })
-            .then(() => {
-            })
-            .catch((error) => {
-                console.error("Errore nel recupero dei dati:", error);
-                setIsLoading(false);
-                setIsError(true);
-            });
-    };
-
-    console.log(jobs)
+    console.log(jobs);
 
     return (
         <>
@@ -82,19 +89,23 @@ const Job = () => {
                 </Container>
             )}
             {jobs &&
-                <Container fluid className="bg-light d-flex px-5 justify-content-center py-5">
+                <Container fluid className="bg-light d-flex p-2 p-sm-5 justify-content-center">
                     <Row className="justify-content-center">
                         <Col>
                             <LeftSidebarJob />
                         </Col>
                         <Col xs={12} md={10} lg={8} className="bg-white border-1 border rounded-3 p-3">
-
-                            <h5 className="mb-3">Le principali offerte di lavoro per te</h5>
+                            <h5 className="mb-3">
+                                {searchQuery ? `Risultati per: "${searchQuery}"` : "Le principali offerte di lavoro per te"}
+                            </h5>
                             <p className="text-muted small">
-                                In base al tuo profilo, alle tue preferenze e ad attività come candidature, ricerche e salvataggi
+                                {searchQuery
+                                    ? `Mostrando risultati di ricerca per "${searchQuery}"`
+                                    : "In base al tuo profilo, alle tue preferenze e ad attività come candidature, ricerche e salvataggi"
+                                }
                             </p>
                             {/* Offerta di lavoro */}
-                            {jobs ? (
+                            {jobs.data.length > 0 ? (
                                 jobs.data.map((job) => (
                                     <Card className="my-3 border-0 border-bottom rounded-0 pointer" key={job._id} onClick={() => handleCardClick(job._id)}>
                                         <Card.Body>
@@ -127,7 +138,6 @@ const Job = () => {
                                         {expandedJobId === job._id && (
                                             <div dangerouslySetInnerHTML={{ __html: job.description }} />
                                         )}
-
                                     </Card>
                                 ))
                             ) : (
@@ -147,4 +157,4 @@ const Job = () => {
     )
 }
 
-export default Job
+export default Job;
