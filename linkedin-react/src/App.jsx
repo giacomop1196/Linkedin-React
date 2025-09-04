@@ -8,6 +8,7 @@ import Footer from './assets/components/Footer';
 import MessageBox from './assets/components/MessageBox';
 import PostSection from './assets/components/PostSection';
 import Job from './assets/components/Job';
+import MobileNavBar from './assets/components/NavbarMobile';
 
 
 // Componente principale dell'applicazione
@@ -16,6 +17,7 @@ function App() {
     <>
       <BrowserRouter>
         <NavBar />
+        <MobileNavBar/>
         <MessageBox></MessageBox>
         <Routes>
           <Route path='/' element={<PostSection />} />

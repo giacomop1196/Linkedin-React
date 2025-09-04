@@ -8,7 +8,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 
-const NavBar = () => {
+const MobileNavBar = () => {
   const profileData = useSelector((state) => state.profile.data);
 
   const location = useLocation();
@@ -21,32 +21,15 @@ const NavBar = () => {
   return (
     <>
       {profileData && (
-        <Container fluid className="bg-withe border-bottom navbar-sticky">
+        <Container fluid className="bg-withe border-bottom ">
           <Row className="justify-content-center p-0">
-            <Col xs={12} md={10} lg={8} className="p-0">
+            <Col className="p-0  d-md-none sticky-bottom">
               <Navbar expand="lg" className="bg-body-light h6">
                 <Container
                   fluid
                   className="d-flex justify-content-center align-items-center"
                 >
-                  <Navbar.Brand href="#">
-                    <i
-                      className="bi bi-linkedin"
-                      style={{ fontSize: "1.8rem", color: "#0A66C2" }}
-                    ></i>
-                  </Navbar.Brand>
-                  <Form
-                    className="d-none d-md-flex mx-3 flex-grow-1 "
-                    style={{ maxWidth: "300px" }}
-                  >
-                    <Form.Control
-                      type=" search"
-                      placeholder="🔍 Cerca"
-                      className="me-2 rounded-pill"
-                      aria-label="Search"
-                    />
-                  </Form>
-                  <Navbar.Toggle />
+                  
                   <Navbar.Collapse id="navbarScroll">
                     <Nav
                       className="mx-auto my-2 my-lg-0 justify-content-center"
@@ -318,4 +301,4 @@ const NavBar = () => {
     </>
   );
 };
-export default NavBar;
+export default MobileNavBar;
