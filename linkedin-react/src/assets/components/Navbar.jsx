@@ -33,22 +33,20 @@ const NavBar = () => {
   return (
     <>
       {profileData &&
-        <Container fluid className="bg-withe border-bottom ">
-          <Row className="justify-content-center p-0">
-            <Col xs={12} md={10} lg={8} className="p-0">
-              <Navbar expand="lg" className="bg-body-light h6">
-                <Container
-                  fluid
-                  className="d-flex justify-content-center align-items-center"
-                >
+        <Container fluid className="bg-white border-bottom">
+          <Row className="justify-content-center">
+            <Col md={10} lg={8} className="my-0">
+              <Navbar expand="lg" className="bg-white py-0">
+                <Container fluid
+                  className="d-flex justify-content-center align-items-center">
                   <Navbar.Brand href="#">
                     <i
-                      className="bi bi-linkedin"
+                      className="bi bi-linkedin py-0"
                       style={{ fontSize: "1.8rem", color: "#0A66C2" }}
                     ></i>
                   </Navbar.Brand>
                   <Form onSubmit={handleSearch}
-                    className="d-none d-md-flex mx-3 flex-grow-1 "
+                    className="d-none d-md-flex mx-3 flex-grow-1"
                     style={{ maxWidth: "300px" }}
                   >
                     <Form.Control
@@ -62,134 +60,138 @@ const NavBar = () => {
                   </Form>
                   <Navbar.Toggle />
                   <Navbar.Collapse id="navbarScroll">
-                    <Nav
-                      className="mx-auto my-2 my-lg-0 justify-content-center"
-                      style={{ maxHeight: "100px" }}
-                      navbarScroll
-                    >
-                      <div className="d-flex border-end">
-                        <div className="d-flex flex-column align-items-center mx-3">
-                          {" "}
-                          <i
-                            className={
-                              location.pathname === "/"
-                                ? "bi bi-house-door-fill text-black"
-                                : "bi bi-house-door-fill text-muted"
-                            }
-                            style={{ fontSize: "1.5rem" }}
-                          ></i>
-                          <Link
-                            className={
-                              location.pathname === "/"
-                                ? "text-black"
-                                : "text-muted"
-                            }
-                            to="/"
-                          >
+                    <Nav className="mx-auto d-flex align-items-center"
+                      style={{ maxHeight: "60px" }} navbarScroll>
+                      <div className="d-flex align-items-center pe-2">
+                        {/* Pulsante Home */}
+                        <div className={location.pathname === "/"
+                          ? "d-flex flex-column align-items-center px-3 border-bottom border-black border-2 pb-0"
+                          : "d-flex flex-column align-items-center px-3 pb-0"}
+                        >
+                          <i className={location.pathname === "/"
+                            ? "bi bi-house-door-fill text-black"
+                            : "bi bi-house-door-fill text-muted"}
+                            style={{ fontSize: "1.5rem" }}>
+                          </i>
+                          <Link className={location.pathname === "/"
+                            ? "text-black"
+                            : "text-muted"} to="/">
                             <span style={{ fontSize: "0.75rem" }}>Home</span>
                           </Link>
                         </div>
-                        <div className="d-flex flex-column align-items-center mx-3">
-                          {" "}
+                        {/* Pulsante Rete */}
+                        <div className="d-flex flex-column align-items-center px-3 pb-0">
                           <i
-                            className="bi bi-people-fill"
+                            className="bi bi-people-fill text-muted"
                             style={{ fontSize: "1.5rem" }}
                           ></i>
-                          <Link className="text-black">
+                          <Link className="text-muted">
                             <span style={{ fontSize: "0.75rem" }}>Rete</span>
                           </Link>
                         </div>
-                        <div className="d-flex flex-column align-items-center mx-3">
+                        {/* Pulsante Lavoro */}
+                        <div className={location.pathname === "/jobs"
+                          ? "d-flex flex-column align-items-center px-3 border-bottom border-black border-2 pb-0"
+                          : "d-flex flex-column align-items-center px-3 pb-0"}>
                           <i
                             className={
                               location.pathname === "/jobs"
-                                ? "blue-link bi bi-briefcase-fill"
-                                : "bi bi-briefcase-fill"
+                                ? "bi bi-briefcase-fill text-black"
+                                : "bi bi-briefcase-fill text-muted"
                             }
                             style={{ fontSize: "1.5rem" }}
                           ></i>
-                          <Link className="text-black">
+                          <Link className={
+                            location.pathname === "/jobs"
+                              ? "text-black"
+                              : "text-muted"
+                          }
+                            to="/jobs">
                             <span style={{ fontSize: "0.75rem" }}>Lavoro</span>
                           </Link>
                         </div>
-                        <div className="d-flex flex-column align-items-center mx-3">
+                        {/* Pulsante Messaggistica */}
+                        <div className="d-flex flex-column align-items-center px-3 pb-0">
                           <i
-                            className="bi bi-chat-dots-fill"
+                            className="bi bi-chat-dots-fill text-muted"
                             style={{ fontSize: "1.5rem" }}
                           ></i>
-                          <Link className="text-black">
+                          <Link className="text-muted">
                             <span style={{ fontSize: "0.75rem" }}>Messaggistica</span>
                           </Link>
                         </div>
-                        <div className="d-flex flex-column align-items-center mx-3">
+                        {/* Pulsante Notifiche */}
+                        <div className="d-flex flex-column align-items-center px-3 pb-0">
                           <i
-                            className="bi bi-bell-fill"
+                            className="bi bi-bell-fill text-muted"
                             style={{ fontSize: "1.5rem" }}
                           ></i>
-                          <Link className="text-black">
+                          <Link className="text-muted">
                             <span style={{ fontSize: "0.75rem" }}>Notifiche</span>
                           </Link>
                         </div>
 
-                        <NavDropdown
-                          title={
-
+                        {/* Profilo */}
+                        <div className="d-flex flex-column align-items-center px-3 py-0 border-end">
+                          <div>
                             <Image
                               src={profileData.image}
                               alt="avatar"
-                              className="rounded-circle d-flex flex-column align-items-center"
+                              className="rounded-circle d-flex flex-column align-items-center mb-0 p-0"
                               style={{
-                                width: "25px",
-                                height: "25px",
+                                width: "30px",
+                                height: "30px",
                                 objectFit: "cover",
                               }}
-                            />}
+                            />
+                            <div className="d-flex align-items-center">
+                              <span className="text-muted" style={{ fontSize: "0.75rem" }}>Tu</span>
+                              <NavDropdown
+                                id="nav-avatar-dropdown"
+                                align="end"
+                              >
+                                <NavDropdown.Item>
 
-                          id="nav-avatar-dropdown"
-                          align="end"
-                        >
+                                  <Link to="/profile">Profilo</Link>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item>
+                                  <Link>Impostazioni</Link>
+                                </NavDropdown.Item>
+                                <NavDropdown.Divider />
 
-                          <NavDropdown.Item>
-                            <Link to="/profile">Profilo</Link>
-                          </NavDropdown.Item>
-                          <NavDropdown.Item>
-                            <Link>Impostazioni</Link>
-                          </NavDropdown.Item>
-                          <NavDropdown.Divider />
-
-                          <NavDropdown.Item>
-                            <Link>Esci</Link>
-                          </NavDropdown.Item>
-                        </NavDropdown>
-                      </div>
-
-                      <div className="d-flex align-items-start position-relative">
-                        <div
-                          className="d-flex flex-column align-items-center mx-2 text-center"
-                          onClick={clikShowDown}
-                        >
+                                <NavDropdown.Item>
+                                  <Link>Esci</Link>
+                                </NavDropdown.Item>
+                              </NavDropdown>
+                            </div>
+                          </div>
+                        </div>
+                        {/* Pulsante Per le Aziende */}
+                      <div className="d-flex align-items-center">
+                        <div className="d-flex flex-column align-items-center mx-2 text-center"
+                          onClick={clikShowDown}>
                           <i
                             className="bi bi-layout-text-window bi bi-compass-fill d-flex mx-2 fs-4 my-2"
                             style={{ fontSize: "1.5rem" }}
                           ></i>
-                          <span style={{ fontSize: "0.80rem" }}>
-                            Per le aziende
-                          </span>
+                          <span style={{ fontSize: "0.75rem" }}>Per le aziende</span>
                         </div>
-                        <div>
-                          <div
-                            style={{ color: "brown" }}
-                            className="border-bottom d-flex align-content-center ms-4 mb-1"
-                          >
-                            <h6>Prova Premium per 0</h6>
+
+                        <div className="text-center">
+                          <div style={{ color: "brown" }}
+                            className="border-bottom d-flex align-content-center ms-4 mb-1 pointer">
+
+                            <span style={{ fontSize: "0.75rem" }}>Prova Premium per 0</span>
                           </div>
                           <div
                             style={{ color: "brown" }}
-                            className="border-bottom d-flex  ms-lg-5 mx-lg-5 mb-auto  justify-content-center "
+                            className="border-bottom d-flex  ms-lg-5 mx-lg-5 mb-auto justify-content-center "
                           >
-                            <h6> EUR</h6>
+                            <span style={{ fontSize: "0.75rem" }}>EUR</span>
+
                           </div>
                         </div>
+                      </div>
                       </div>
                     </Nav>
                   </Navbar.Collapse>
