@@ -29,7 +29,7 @@ const RightSidebar = () => {
   return (
     <>
       {/* LinkedIn News */}
-      <Card className="mb-3 shadow-sm border-0">
+      <Card className="mb-3 shadow-sm border-0 rounded-3">
         <Card.Header className="bg-transparent border-0 pb-0">
           <h6 className="mb-0 fw-semibold">LinkedIn Notizie</h6>
           <p className="small text-muted mb-0">Storie principali</p>
@@ -52,7 +52,7 @@ const RightSidebar = () => {
 
       {/* Profile Update Ad */}
       {profileData && 
-      <Card className="mb-2 shadow-sm border-0">
+      <Card className="mb-2 shadow-sm border-0 rounded-3">
         <Card.Body className="p-2">
           <div className="d-flex align-items-center mb-2">
             <Image

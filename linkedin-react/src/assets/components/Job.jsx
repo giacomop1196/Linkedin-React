@@ -89,7 +89,7 @@ const Job = () => {
                 </Container>
             )}
             {jobs &&
-                <Container fluid className="bg-light d-flex px-5 justify-content-center py-5">
+                <Container fluid className="bg-light d-flex p-2 p-sm-5 justify-content-center">
                     <Row className="justify-content-center">
                         <Col>
                             <LeftSidebarJob />

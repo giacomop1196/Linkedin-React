@@ -36,7 +36,7 @@ const NavBar = () => {
         <Container fluid className="bg-white border-bottom">
           <Row className="justify-content-center">
             <Col md={10} lg={8} className="my-0">
-              <Navbar expand="lg" className="bg-white py-0">
+              <Navbar expand="lg" className="bg-white py-0 d-none d-md-block">
                 <Container fluid
                   className="d-flex justify-content-center align-items-center">
                   <Navbar.Brand href="#">
@@ -170,10 +170,10 @@ const NavBar = () => {
                         <div className="d-flex flex-column align-items-center mx-2 text-center"
                           onClick={clikShowDown}>
                           <i
-                            className="bi bi-layout-text-window bi bi-compass-fill d-flex mx-2 fs-4 my-2"
+                            className="bi bi-border d-flex mx-2 fs-4 my-2"
                             style={{ fontSize: "1.5rem" }}
                           ></i>
-                          <span style={{ fontSize: "0.75rem" }}>Per le aziende</span>
+                          <span className="text-muted" style={{ fontSize: "0.75rem" }}>Per le aziende</span>
                         </div>
 
                         <div className="text-center">

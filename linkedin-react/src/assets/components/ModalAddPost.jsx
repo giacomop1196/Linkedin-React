@@ -58,7 +58,7 @@ const ModalAddPost = ({ show, closeModal }) => {
     <>
       {profileData && (
         <Modal show={show} centered>
-          <Modal.Header closeButton>
+          <Modal.Header>
             <Modal.Title>Ciao {profileData.name} </Modal.Title>
           </Modal.Header>
 
@@ -74,11 +74,11 @@ const ModalAddPost = ({ show, closeModal }) => {
               required
             />
           </Modal.Body>
-          <div className="ms-2 mb-2 d-flex gap-3">
+          <div className="ms-2 mb-2 d-flex gap-3 px-3 pointer">
             <i className="bi bi-emoji-smile"></i>{" "}
           </div>
 
-          <div className="ms-2 mb-2 d-flex gap-3">
+          <div className="ms-2 mb-2 d-flex gap-3 px-3">
             <OverlayTrigger
               placement="top"
               overlay={
@@ -150,7 +150,7 @@ const ModalAddPost = ({ show, closeModal }) => {
             <Button
               variant="secondary-subtle"
               type="submit"
-              className="rounded-pill"
+              className="rounded-pill bg-dark-subtle px-4"
             >
               Pubblica
             </Button>
