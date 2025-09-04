@@ -8,6 +8,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const NavBar = () => {
+
   const profileData = useSelector((state) => state.profile.data);
 
   const location = useLocation();
@@ -31,7 +32,7 @@ const NavBar = () => {
 
   return (
     <>
-      {profileData && (
+      {profileData &&
         <Container fluid className="bg-withe border-bottom ">
           <Row className="justify-content-center p-0">
             <Col xs={12} md={10} lg={8} className="p-0">
@@ -67,7 +68,7 @@ const NavBar = () => {
                       navbarScroll
                     >
                       <div className="d-flex border-end">
-                        <div className="d-flex flex-column align-items-center mx-4 mt-2">
+                        <div className="d-flex flex-column align-items-center mx-3">
                           {" "}
                           <i
                             className={
@@ -88,7 +89,7 @@ const NavBar = () => {
                             <span style={{ fontSize: "0.75rem" }}>Home</span>
                           </Link>
                         </div>
-                        <div className="d-flex flex-column align-items-center mx-4 mt-2">
+                        <div className="d-flex flex-column align-items-center mx-3">
                           {" "}
                           <i
                             className="bi bi-people-fill"
@@ -98,7 +99,7 @@ const NavBar = () => {
                             <span style={{ fontSize: "0.75rem" }}>Rete</span>
                           </Link>
                         </div>
-                        <div className="d-flex flex-column align-items-center mx-4 mt-2">
+                        <div className="d-flex flex-column align-items-center mx-3">
                           <i
                             className={
                               location.pathname === "/jobs"
@@ -107,49 +108,47 @@ const NavBar = () => {
                             }
                             style={{ fontSize: "1.5rem" }}
                           ></i>
-                          <Link className={location.pathname === "/jobs" ? "blue-link" : "text-black"} to="/jobs" >
+                          <Link className="text-black">
                             <span style={{ fontSize: "0.75rem" }}>Lavoro</span>
                           </Link>
                         </div>
-                        <div className="d-flex flex-column align-items-center mx-4 mt-2">
+                        <div className="d-flex flex-column align-items-center mx-3">
                           <i
                             className="bi bi-chat-dots-fill"
                             style={{ fontSize: "1.5rem" }}
                           ></i>
                           <Link className="text-black">
-                            <span style={{ fontSize: "0.75rem" }}>
-                              Messaggistica
-                            </span>
+                            <span style={{ fontSize: "0.75rem" }}>Messaggistica</span>
                           </Link>
                         </div>
-                        <div className="d-flex flex-column align-items-center mx-4 mt-2">
+                        <div className="d-flex flex-column align-items-center mx-3">
                           <i
                             className="bi bi-bell-fill"
                             style={{ fontSize: "1.5rem" }}
                           ></i>
                           <Link className="text-black">
-                            <span style={{ fontSize: "0.75rem" }}>
-                              Notifiche
-                            </span>
+                            <span style={{ fontSize: "0.75rem" }}>Notifiche</span>
                           </Link>
                         </div>
 
                         <NavDropdown
                           title={
+
                             <Image
                               src={profileData.image}
                               alt="avatar"
-                              className="rounded-circle d-flex flex-column align-items-center d-flex flex-column align-items-center  mt-2"
+                              className="rounded-circle d-flex flex-column align-items-center"
                               style={{
                                 width: "25px",
                                 height: "25px",
                                 objectFit: "cover",
                               }}
-                            />
-                          }
+                            />}
+
                           id="nav-avatar-dropdown"
                           align="end"
                         >
+
                           <NavDropdown.Item>
                             <Link to="/profile">Profilo</Link>
                           </NavDropdown.Item>
@@ -218,9 +217,7 @@ const NavBar = () => {
                             className="blue-link bi bi-compass-fill d-flex mx-2 fs-3 mb-2"
                             href="compass"
                           ></i>
-                          <h5 className="d-flex align-self-center">
-                            Trova Lead
-                          </h5>
+                          <h5 className="d-flex align-self-center">Trova Lead</h5>
                         </div>
                       </div>
                       <div>
@@ -285,9 +282,7 @@ const NavBar = () => {
                       </div>
                       <div>
                         <p className="fs-5">Vendi con Linkedin</p>
-                        <p className="fs-6">
-                          Sblocca nuove opportunità di vendita
-                        </p>
+                        <p className="fs-6">Sblocca nuove opportunità di vendita</p>
                       </div>
                       <div>
                         <p className="fs-5">offerta di lavoro gratuita</p>
@@ -307,9 +302,7 @@ const NavBar = () => {
                       </div>
                       <div>
                         <p className="fs-5">Impara conLinkedin</p>
-                        <p className="fs-6">
-                          Corsi per formare i tuoi dipendenti
-                        </p>
+                        <p className="fs-6">Corsi per formare i tuoi dipendenti</p>
                       </div>
                       <div>
                         <p className="fs-5">Centro per amministratori</p>
@@ -327,7 +320,7 @@ const NavBar = () => {
             </Col>
           </Row>
         </Container>
-      )}
+      }
     </>
   );
 };

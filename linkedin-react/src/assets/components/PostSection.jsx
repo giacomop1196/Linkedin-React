@@ -168,7 +168,7 @@ const PostSection = () => {
           <Col xs={12} md={10} lg={2}>
             <LeftSidebar />
           </Col>
-          <Col xs={12} md={10} lg={8} className="w-25">
+          <Col xs={12} md={10} lg={8} className="w-lg-25">
             <div className="p-3">
               {/* Barra di creazione post */}
               {result &&

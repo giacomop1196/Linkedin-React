@@ -1,5 +1,5 @@
 import { Row, Col, Container, Dropdown } from "react-bootstrap";
-import "./Footer.css";
+import "../css/Footer.css";
 
 const Footer = () => {
   return (
