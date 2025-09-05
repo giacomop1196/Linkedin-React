@@ -112,7 +112,7 @@ const Job = () => {
                                             <Row className="align-items-center">
                                                 <Col xs="auto" className="d-flex align-items-center">
                                                     <div className="bg-light d-flex justify-content-center align-items-center" >
-                                                        <Image src="./img/job.jpg" className="rounded-circle object-fit-cover" style={{ width: '50px', height: '50px' }}/>
+                                                        <Image src="./img/job.jpg" className="rounded-circle object-fit-cover" style={{ width: '50px', height: '50px' }} />
                                                     </div>
                                                 </Col>
                                                 <Col>
@@ -143,12 +143,13 @@ const Job = () => {
                             ) : (
                                 <p>Nessun annuncio da mostrare.</p>
                             )}
-
-                            <div className="text-center mt-4">
-                                <Button variant="link" className="text-decoration-none">
-                                    Mostra tutto <span aria-hidden="true">&rarr;</span>
-                                </Button>
-                            </div>
+                            {jobs.data.length > 0 &&
+                                <div className="text-center mt-4">
+                                    <Button variant="link" className="text-decoration-none">
+                                        Mostra tutto <span aria-hidden="true">&rarr;</span>
+                                    </Button>
+                                </div>
+                            }
                         </Col>
                     </Row>
                 </Container>

@@ -3,7 +3,7 @@ import { useState, useEffect} from 'react'
 import ProfileRightSidebar from './ProfileRightSidebar';
 import AddExperiences from './ModalAddExperiences';
 import ModalEditExperience from './ModalEditExperience';
-
+import LinearProgress from "@mui/material/LinearProgress";
 
 const LinkedinProfileSection = () => {
 
@@ -145,13 +145,15 @@ const LinkedinProfileSection = () => {
         <>
             {/* Spinner */}
             {isLoading && (
-                <Container fluid className="min-vh-100 bg-light">
-                    <Row className="p-5">
-                        <div className="text-center mb-3">
-                            <Spinner animation="grow" />
-                        </div>
-                    </Row>
-                </Container>
+                 <Container fluid
+                          className="min-vh-100 bg-light d-flex justify-content-center align-items-center">
+                          <Row className="d-flex justify-content-center">
+                            <div className="d-flex flex-column align-items-center gap-3 ">
+                              <Image src="./img/LinkedIn_2021.svg" className="h-25 w-25" />
+                              <LinearProgress className="w-100 w-sm-75 w-md-50 w-lg-25" />
+                            </div>
+                          </Row>
+                        </Container>
             )}
             {/* Errore se vado nel catch */}
             {isError && (

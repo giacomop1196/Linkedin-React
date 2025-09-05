@@ -65,20 +65,20 @@ const LeftSidebarJob = () => {
       {/* Navigation Links */}
       <Card className="mb-3 shadow-sm border-0 rounded-3">
         <Card.Body className="p-3">
-          <div className="d-flex align-items-center mb-3">
+          <div className="d-flex align-items-center mb-3 pointer">
             <i className="bi bi-list me-3"></i>
             <span>Preferenze</span>
           </div>
-          <div className="d-flex align-items-center mb-3">
+          <div className="d-flex align-items-center mb-3 pointer">
             <i className="bi bi-bookmark-fill me-3"></i>
             <span>Le mie offerte di lavoro</span>
           </div>
-          <div className="d-flex align-items-center mb-3 border-bottom pb-3">
+          <div className="d-flex align-items-center mb-3 border-bottom pb-3 pointer">
             <i className="bi bi-slash-square-fill me-3"></i>
             <span>Le mie informazioni sulla carriera</span>
           </div>
 
-          <div className="d-flex align-items-center mb-3 blue-link fw-bold">
+          <div className="d-flex align-items-center mb-3 blue-link fw-bold pointer">
             <i className="bi bi-pencil-square me-3"></i>
             <span>Pubblica offerta gratuita</span>
           </div>

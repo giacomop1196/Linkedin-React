@@ -43,21 +43,17 @@ const NavBar = () => {
             <Col md={10} lg={8} className="my-0">
               <InputSearchMobile />
               <Navbar expand="lg" className="bg-white py-0 d-none d-md-block">
-                <Container
-                  fluid
-                  className="d-flex justify-content-center align-items-center"
-                >
-                  <Navbar.Brand href="#">
-                    <i
-                      className="bi bi-linkedin py-0"
-                      style={{ fontSize: "1.8rem", color: "#0A66C2" }}
-                    ></i>
-                  </Navbar.Brand>
+                <Container fluid
+                  className="d-flex justify-content-center align-items-center">
+                  <Link to='/'>
+                    <i className="bi bi-linkedin py-0"
+                      style={{ fontSize: "1.8rem", color: "#0A66C2" }}>
+                    </i>
+                  </Link>
                   <Form
                     onSubmit={handleSearch}
                     className="d-none d-md-flex mx-3 flex-grow-1"
-                    style={{ maxWidth: "300px" }}
-                  >
+                    style={{ maxWidth: "300px" }}>
                     <Form.Control
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
