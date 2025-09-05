@@ -29,7 +29,6 @@ const ModalAddPost = ({ show, closeModal, refreshPost }) => {
 
     setFormValues({ text: newText });
 
-    // Riposiziona il cursore dopo l'emoji
     setTimeout(() => {
       textarea.focus();
       textarea.setSelectionRange(start + emoji.length, start + emoji.length);
