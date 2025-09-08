@@ -168,7 +168,7 @@ const EmojiPickerModal = ({ show, handleClose, onSelectEmoji }) => {
   ];
 
   return (
-    <Modal show={show} onHide={handleClose} centered>
+    <Modal show={show} onHide={handleClose} centered scrollable>
       <Modal.Header closeButton>
         <Modal.Title>Seleziona un'emoji</Modal.Title>
       </Modal.Header>
